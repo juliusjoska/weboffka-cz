@@ -1,0 +1,14 @@
+services:
+  weboffka:
+    build: .
+    container_name: weboffka
+    restart: unless-stopped
+    ports:
+      - "3060:3000"
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
