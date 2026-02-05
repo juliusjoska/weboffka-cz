@@ -18,9 +18,9 @@ export function Footer() {
             <Image
               src="/logo.png"
               alt="Weboffka"
-              width={120}
-              height={30}
-              className="h-6 w-auto mb-3"
+              width={160}
+              height={45}
+              className="h-10 w-auto mb-3"
             />
             <p className="text-sm text-muted">© 2026 Weboffka</p>
           </div>
