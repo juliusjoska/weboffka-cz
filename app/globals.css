@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #FAFAFA;
+    --foreground: #1A1A1A;
+    --accent: #FF5500;
+    --accent-light: #FF7733;
+    --accent-dark: #CC4400;
+    --muted: #6B7280;
+    --muted-foreground: #9CA3AF;
+    --border: #E5E7EB;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .heading-1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  .heading-3 {
+    @apply text-2xl md:text-3xl font-bold tracking-tight;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-dark;
+  }
+
+  .btn-secondary {
+    @apply btn bg-foreground text-white hover:bg-foreground/90;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-foreground text-foreground hover:bg-foreground hover:text-white;
+  }
+}
+
+/* Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
