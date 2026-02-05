@@ -2,57 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: #121212;
-    --background-light: #1A1A1A;
-    --background-card: #2C2C2C;
-    --foreground: #F0F0F0;
-    --muted: #B0B0B0;
-    --accent: #CCFF00;
-    --accent-glow: rgba(204, 255, 0, 0.4);
-    --accent-dark: #A3CC00;
-    --border: #3A3A3A;
-  }
-
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
+    --background: #0a0a0a;
+    --foreground: #fafafa;
+    --muted: #a1a1a1;
+    --accent: #c8ff00;
+    --border: #262626;
   }
 
   body {
     background: var(--background);
     color: var(--foreground);
     font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--background);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--muted);
-  }
-
-  /* Selection */
   ::selection {
     background: var(--accent);
     color: var(--background);
@@ -61,131 +27,22 @@
 
 @layer components {
   .container {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-5xl mx-auto px-6;
   }
 
   .section {
-    @apply py-16 md:py-24;
+    @apply py-20;
   }
 
-  /* Typography */
-  .heading-1 {
-    @apply text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight font-heading;
-  }
-
-  .heading-2 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight font-heading;
-  }
-
-  .heading-3 {
-    @apply text-2xl md:text-3xl font-bold tracking-tight font-heading;
-  }
-
-  /* Buttons */
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-300;
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-colors;
   }
 
   .btn-primary {
-    @apply btn bg-accent text-background hover:shadow-glow;
-  }
-
-  .btn-secondary {
-    @apply btn bg-background-card text-foreground border border-border hover:border-accent hover:text-accent;
+    @apply btn bg-accent text-background hover:bg-accent/90;
   }
 
   .btn-outline {
-    @apply btn border-2 border-accent/50 text-accent hover:bg-accent hover:text-background hover:shadow-glow;
+    @apply btn border border-border text-foreground hover:border-accent hover:text-accent;
   }
-
-  .btn-ghost {
-    @apply btn text-muted hover:text-accent hover:bg-accent/10;
-  }
-
-  /* Glass Card */
-  .glass-card {
-    @apply bg-background-card/80 backdrop-blur-md border border-border rounded-2xl;
-  }
-
-  .glass-card-accent {
-    @apply glass-card border-t border-t-accent/30;
-  }
-
-  /* Glow effects */
-  .glow {
-    @apply shadow-glow;
-  }
-
-  .glow-text {
-    text-shadow: 0 0 20px var(--accent-glow);
-  }
-
-  /* Grid background */
-  .bg-grid {
-    background-image: linear-gradient(rgba(204, 255, 0, 0.03) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(204, 255, 0, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-
-  /* ON state */
-  .state-on {
-    @apply bg-accent text-background shadow-glow;
-  }
-
-  /* OFF state */
-  .state-off {
-    @apply bg-background-card text-muted border border-border;
-  }
-
-  /* Toggle switch */
-  .toggle-switch {
-    @apply relative w-14 h-7 bg-background-card rounded-full cursor-pointer transition-all duration-300;
-  }
-  .toggle-switch::after {
-    content: '';
-    @apply absolute top-1 left-1 w-5 h-5 bg-muted rounded-full transition-all duration-300;
-  }
-  .toggle-switch.active {
-    @apply bg-accent shadow-glow;
-  }
-  .toggle-switch.active::after {
-    @apply bg-background translate-x-7;
-  }
-
-  /* Bento grid */
-  .bento-grid {
-    @apply grid gap-4;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-
-  /* Prose for dark mode */
-  .prose {
-    @apply text-muted;
-  }
-  .prose strong {
-    @apply text-foreground;
-  }
-  .prose h2 {
-    @apply text-foreground font-heading text-2xl mt-8 mb-4;
-  }
-  .prose ul {
-    @apply space-y-2 my-4;
-  }
-  .prose li {
-    @apply pl-6 relative;
-  }
-  .prose li::before {
-    content: '';
-    @apply absolute left-0 top-3 w-2 h-2 bg-accent rounded-full;
-  }
-}
-
-/* Animations */
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-.animate-flicker {
-  animation: flicker 0.1s ease-in-out;
 }

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
@@ -18,9 +18,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -28,84 +26,70 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled
-          ? 'bg-background/90 backdrop-blur-md border-b border-border'
-          : 'bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 transition-all',
+        isScrolled ? 'bg-background/95 backdrop-blur-sm border-b border-border' : ''
       )}
     >
       <div className="container">
-        <nav className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link href="/" className="group relative">
-            <span className="text-xl md:text-2xl font-bold font-heading tracking-tight">
-              WEBO<span className="text-accent group-hover:glow-text transition-all">FF</span>KA
-            </span>
-            {/* Glow effect on hover */}
-            <span className="absolute -inset-2 bg-accent/0 group-hover:bg-accent/5 rounded-lg transition-colors" />
+        <nav className="flex items-center justify-between h-20">
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="Weboffka"
+              width={160}
+              height={40}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-muted hover:text-accent transition-colors rounded-lg hover:bg-accent/5"
+                className="text-sm text-muted hover:text-foreground transition-colors"
               >
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/kontakt"
-              className="ml-4 btn-primary text-sm"
-            >
+            <Link href="/kontakt" className="btn-primary text-sm">
               Kontakt
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground hover:text-accent transition-colors"
+            className="md:hidden text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background-light border-t border-border"
-          >
-            <div className="container py-6 space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block py-3 px-4 text-lg font-medium text-muted hover:text-accent hover:bg-accent/5 rounded-lg transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-background border-t border-border">
+          <div className="container py-4 space-y-2">
+            {navLinks.map((link) => (
               <Link
-                href="/kontakt"
-                className="btn-primary w-full text-center mt-4"
+                key={link.href}
+                href={link.href}
+                className="block py-3 text-muted hover:text-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Kontakt
+                {link.label}
               </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <Link
+              href="/kontakt"
+              className="btn-primary w-full text-center mt-4"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Kontakt
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   )
 }
