@@ -8,11 +8,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#0a0a0a',
+        background: {
+          DEFAULT: '#0a0a0a',
+          secondary: '#141414',
+        },
         foreground: '#fafafa',
-        muted: '#a1a1a1',
-        accent: '#c8ff00',
-        border: '#262626',
+        muted: '#888888',
+        accent: {
+          DEFAULT: '#c8ff00',
+          dark: '#a8d900',
+        },
+        border: '#222222',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

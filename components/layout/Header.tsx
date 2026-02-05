@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 const navLinks = [
   { href: '/sluzby', label: 'Služby' },
@@ -25,20 +24,19 @@ export function Header() {
 
   return (
     <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all',
+      className={`fixed top-0 left-0 right-0 z-50 transition-all ${
         isScrolled ? 'bg-background/95 backdrop-blur-sm border-b border-border' : ''
-      )}
+      }`}
     >
       <div className="container">
-        <nav className="flex items-center justify-between h-20">
+        <nav className="flex items-center justify-between h-16 md:h-20">
           <Link href="/">
             <Image
               src="/logo.png"
               alt="Weboffka"
-              width={160}
-              height={40}
-              className="h-8 w-auto"
+              width={140}
+              height={35}
+              className="h-7 md:h-8 w-auto"
               priority
             />
           </Link>
@@ -74,7 +72,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-3 text-muted hover:text-foreground"
+                className="block py-3 text-muted"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}

@@ -1,40 +1,48 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center pt-20">
+    <section className="min-h-screen flex flex-col justify-center pt-20">
       <div className="container">
         <div className="max-w-3xl">
-          <Image
-            src="/logo.png"
-            alt="Weboffka"
-            width={400}
-            height={100}
-            className="h-16 md:h-20 w-auto mb-8"
-            priority
-          />
+          <p className="text-accent font-medium mb-4">
+            Webové studio
+          </p>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            Moderní weby,
-            <br />
-            <span className="text-accent">které fungují.</span>
+          <h1 className="heading-1 mb-6">
+            Webovky bez starostí
           </h1>
 
-          <p className="text-xl text-muted mb-10 max-w-xl">
-            Děláme weby na míru pro firmy a podnikatele.
-            Bez WordPressu, bez šablon, bez zbytečností.
+          <p className="text-xl text-muted max-w-2xl mb-10">
+            Děláme moderní weby, které fungují a vydělávají.
+            Bez WordPressu. Bez šablon. Bez zbytečné byrokracie.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/kontakt" className="btn-primary text-lg px-8 py-4">
-              Chci web
+              Chci web <ArrowRight size={20} className="ml-2" />
             </Link>
-            <Link href="/portfolio" className="btn-outline text-lg px-8 py-4">
-              Naše práce
+            <Link href="#sluzby" className="btn-outline text-lg px-8 py-4">
+              Jak to funguje
             </Link>
+          </div>
+
+          <div className="flex gap-12 mt-16 pt-8 border-t border-border">
+            <div>
+              <div className="text-3xl font-bold text-accent">50+</div>
+              <div className="text-sm text-muted">projektů</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-accent">8+</div>
+              <div className="text-sm text-muted">let zkušeností</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-accent">100%</div>
+              <div className="text-sm text-muted">dokončených</div>
+            </div>
           </div>
         </div>
       </div>
