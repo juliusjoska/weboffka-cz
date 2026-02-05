@@ -21,7 +21,7 @@ export function Hero() {
             transition={{ delay: 0.2 }}
             className="text-muted font-medium mb-4"
           >
-            Váš osobní webař
+            Webové studio bez zbytečností
           </motion.p>
 
           {/* Headline */}
@@ -41,9 +41,9 @@ export function Hero() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10"
           >
-            Moderní weby, které fungují a vydělávají.
+            Děláme moderní weby, které fungují a vydělávají.
             <br />
-            Bez WordPressu. Bez šablon. Bez IT žargonu.
+            Bez WordPressu. Bez šablon. Bez zbytečné byrokracie.
           </motion.p>
 
           {/* CTAs */}

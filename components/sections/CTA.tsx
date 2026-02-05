@@ -16,8 +16,8 @@ export function CTA() {
         >
           <h2 className="heading-2 mb-4">Pojďme na to</h2>
           <p className="text-white/70 text-lg mb-8">
-            Napište mi o vašem projektu.
-            Odpovím do 24 hodin s konkrétní nabídkou.
+            Napište nám o vašem projektu.
+            Ozveme se do 24 hodin s konkrétní nabídkou.
           </p>
           <Link
             href="/kontakt"

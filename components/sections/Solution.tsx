@@ -11,8 +11,8 @@ const solutions = [
   },
   {
     icon: User,
-    title: 'Osobní přístup',
-    description: 'Komunikujete přímo se mnou. Žádné předávání přes account managery.',
+    title: 'Přímá komunikace',
+    description: 'Komunikujete přímo s námi. Žádné předávání přes account managery.',
   },
   {
     icon: DollarSign,
@@ -52,8 +52,8 @@ export function Solution() {
           transition={{ delay: 0.1, duration: 0.6 }}
           className="text-center text-lg text-muted max-w-2xl mx-auto mb-12"
         >
-          Jsem váš osobní webař. Jeden člověk, jedna odpovědnost.
-          Dělám weby, které fungují — a vy se můžete soustředit na byznys.
+          Malý tým, velký výsledek.
+          Děláme weby, které fungují — a vy se můžete soustředit na byznys.
         </motion.p>
 
         {/* Solutions Grid */}

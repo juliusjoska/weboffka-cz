@@ -46,7 +46,7 @@ export default function PortfolioPage() {
           <div className="text-center mb-12">
             <h1 className="heading-1 mb-4">Portfolio</h1>
             <p className="text-lg text-muted max-w-2xl mx-auto">
-              Výběr projektů, na které jsem hrdý. Každý web je příběh.
+              Výběr projektů, na které jsme hrdí. Každý web je příběh.
             </p>
           </div>
 
@@ -85,9 +85,9 @@ export default function PortfolioPage() {
           {/* Note */}
           <div className="text-center mt-12">
             <p className="text-muted">
-              Některé projekty nemohu zveřejnit kvůli NDA.
+              Některé projekty nemůžeme zveřejnit kvůli NDA.
               <br />
-              Pokud chcete vidět více, napište mi.
+              Pokud chcete vidět více, napište nám.
             </p>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function PortfolioPage() {
         <div className="container text-center">
           <h2 className="heading-2 mb-4">Chcete podobný web?</h2>
           <p className="text-white/70 mb-8">
-            Napište mi o vašem projektu a uděláme něco skvělého.
+            Napište nám o vašem projektu a uděláme něco skvělého.
           </p>
           <Link href="/kontakt" className="btn bg-accent hover:bg-accent-dark text-white">
             Začít projekt

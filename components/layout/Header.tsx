@@ -10,7 +10,7 @@ const navLinks = [
   { href: '/sluzby', label: 'Služby' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/cenik', label: 'Ceník' },
-  { href: '/o-mne', label: 'O mně' },
+  { href: '/o-nas', label: 'O nás' },
 ]
 
 export function Header() {
