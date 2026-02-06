@@ -20,7 +20,7 @@ export function Footer() {
               alt="Weboffka"
               width={160}
               height={45}
-              className="h-10 w-auto mb-3"
+              className="h-12 w-auto mb-3"
             />
             <p className="text-sm text-muted mb-4">
               Moderní weby pro firmy, které chtějí růst.

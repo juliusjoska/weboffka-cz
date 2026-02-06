@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -19,9 +20,13 @@ export default function ONasPage() {
           <div className="max-w-3xl mx-auto">
             {/* Logo */}
             <div className="text-center mb-12">
-              <div className="w-32 h-32 mx-auto rounded-2xl bg-gradient-to-br from-accent to-accent-dark mb-6 flex items-center justify-center text-white text-3xl font-bold tracking-tight">
-                we<span className="opacity-80">ff</span>
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Weboffka"
+                width={320}
+                height={90}
+                className="h-20 w-auto mx-auto mb-6"
+              />
               <h1 className="heading-1 mb-2">Weboffka</h1>
               <p className="text-xl text-muted">Webař bez zbytečností.</p>
             </div>

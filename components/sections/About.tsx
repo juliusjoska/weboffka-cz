@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const stats = [
@@ -23,9 +24,13 @@ export function About() {
             className="text-center md:text-left"
           >
             {/* Logo */}
-            <div className="w-32 h-32 mx-auto md:mx-0 rounded-2xl bg-gradient-to-br from-accent to-accent-dark mb-6 flex items-center justify-center text-white text-2xl font-bold tracking-tight">
-              we<span className="opacity-80">ff</span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Weboffka"
+              width={240}
+              height={68}
+              className="h-16 w-auto mx-auto md:mx-0 mb-6"
+            />
 
             {/* Stats */}
             <div className="flex justify-center md:justify-start gap-8">
