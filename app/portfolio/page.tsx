@@ -5,34 +5,32 @@ import { ExternalLink } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Portfolio | Weboffka',
   description: 'Ukázky webových projektů. Landing pages, firemní prezentace, e-commerce.',
+  openGraph: {
+    title: 'Portfolio | Weboffka',
+    description: 'Ukázky webových projektů. Landing pages, firemní prezentace, e-commerce.',
+    url: 'https://weboffka.cz/portfolio',
+  },
 }
 
 const projects = [
   {
-    title: 'Firemní web pro IT firmu',
-    category: 'Firemní prezentace',
-    description: 'Moderní prezentace s animacemi a interaktivními prvky.',
+    title: 'Sepot',
+    category: 'E-commerce',
+    description: 'Moderní e-shop s potravinami s důrazem na uživatelský zážitek.',
     image: '/images/portfolio/placeholder.jpg',
     link: '#',
   },
   {
-    title: 'Landing page pro SaaS',
-    category: 'Landing page',
-    description: 'Konverzní landing page s důrazem na CTA.',
+    title: 'Moje Obec',
+    category: 'SaaS',
+    description: 'Platforma pro správu obecních webů a komunikaci s občany.',
     image: '/images/portfolio/placeholder.jpg',
     link: '#',
   },
   {
-    title: 'Portfolio fotografa',
-    category: 'Portfolio',
-    description: 'Minimalistické portfolio s galerií a kontaktním formulářem.',
-    image: '/images/portfolio/placeholder.jpg',
-    link: '#',
-  },
-  {
-    title: 'Web pro kavárnu',
-    category: 'Lokální byznys',
-    description: 'Stylový web s menu, galerií a rezervacemi.',
+    title: 'Tastly',
+    category: 'Aplikace',
+    description: 'Mobilní aplikace pro sdílení a objevování receptů.',
     image: '/images/portfolio/placeholder.jpg',
     link: '#',
   },
@@ -55,11 +53,11 @@ export default function PortfolioPage() {
             {projects.map((project) => (
               <div
                 key={project.title}
-                className="group bg-white rounded-xl border border-border overflow-hidden hover:shadow-lg transition-shadow"
+                className="group bg-background-secondary rounded-xl border border-border overflow-hidden hover:shadow-lg transition-shadow"
               >
                 {/* Image placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                <div className="aspect-video bg-background relative">
+                  <div className="absolute inset-0 flex items-center justify-center text-muted">
                     [Screenshot]
                   </div>
                 </div>
@@ -94,13 +92,13 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-foreground text-white">
+      <section className="py-16 bg-accent/10 border-t border-border">
         <div className="container text-center">
           <h2 className="heading-2 mb-4">Chcete podobný web?</h2>
-          <p className="text-white/70 mb-8">
+          <p className="text-muted mb-8">
             Napište nám o vašem projektu a uděláme něco skvělého.
           </p>
-          <Link href="/kontakt" className="btn bg-accent hover:bg-accent-dark text-white">
+          <Link href="/kontakt" className="btn-primary">
             Začít projekt
           </Link>
         </div>

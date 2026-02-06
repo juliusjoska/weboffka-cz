@@ -11,9 +11,11 @@ const contactSchema = z.object({
   name: z.string().min(2, 'Jméno je povinné'),
   email: z.string().email('Neplatný email'),
   website: z.string().optional(),
+  website_url: z.string().optional(),
   message: z.string().min(10, 'Zpráva musí mít alespoň 10 znaků'),
   budget: z.string().optional(),
   timeline: z.string().optional(),
+  gdprConsent: z.literal(true, { errorMap: () => ({ message: 'Musíte souhlasit se zpracováním osobních údajů' }) }),
 })
 
 type ContactFormData = z.infer<typeof contactSchema>
@@ -79,13 +81,18 @@ export default function KontaktPage() {
               className="lg:col-span-3"
             >
               {submitStatus === 'success' ? (
-                <div className="p-8 bg-green-50 rounded-xl text-center">
+                <div className="p-8 bg-green-500/10 rounded-xl text-center">
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2">Díky!</h3>
                   <p className="text-muted">Ozveme se do 24 hodin.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  {/* Honeypot */}
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <input {...register('website_url')} tabIndex={-1} autoComplete="off" />
+                  </div>
+
                   {/* Name */}
                   <div>
                     <label className="block text-sm font-medium mb-2">
@@ -95,7 +102,7 @@ export default function KontaktPage() {
                       {...register('name')}
                       type="text"
                       placeholder="Jan Novák"
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
                     />
                     {errors.name && (
                       <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
@@ -111,7 +118,7 @@ export default function KontaktPage() {
                       {...register('email')}
                       type="email"
                       placeholder="jan@firma.cz"
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
                     />
                     {errors.email && (
                       <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
@@ -127,7 +134,7 @@ export default function KontaktPage() {
                       {...register('website')}
                       type="text"
                       placeholder="www.mojefirma.cz"
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
                     />
                   </div>
 
@@ -140,7 +147,7 @@ export default function KontaktPage() {
                       {...register('message')}
                       rows={5}
                       placeholder="Popište váš projekt..."
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors resize-none"
                     />
                     {errors.message && (
                       <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
@@ -154,7 +161,7 @@ export default function KontaktPage() {
                     </label>
                     <select
                       {...register('budget')}
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors bg-white"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
                     >
                       <option value="">Vyberte...</option>
                       <option value="do-20k">do 20 000 Kč</option>
@@ -172,7 +179,7 @@ export default function KontaktPage() {
                     </label>
                     <select
                       {...register('timeline')}
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors bg-white"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
                     >
                       <option value="">Vyberte...</option>
                       <option value="asap">Co nejdřív</option>
@@ -181,6 +188,26 @@ export default function KontaktPage() {
                       <option value="nespecha">Nespěchá</option>
                     </select>
                   </div>
+
+                  {/* GDPR */}
+                  <div className="flex items-start gap-3">
+                    <input
+                      {...register('gdprConsent')}
+                      type="checkbox"
+                      id="gdprConsent"
+                      className="mt-1 w-4 h-4 accent-accent"
+                    />
+                    <label htmlFor="gdprConsent" className="text-sm text-muted">
+                      Souhlasím se{' '}
+                      <a href="/ochrana-osobnich-udaju" className="text-accent hover:underline" target="_blank">
+                        zpracováním osobních údajů
+                      </a>{' '}
+                      za účelem vyřízení poptávky. *
+                    </label>
+                  </div>
+                  {errors.gdprConsent && (
+                    <p className="text-red-500 text-sm">{errors.gdprConsent.message}</p>
+                  )}
 
                   {/* Submit */}
                   <button
@@ -214,7 +241,7 @@ export default function KontaktPage() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="lg:col-span-2"
             >
-              <div className="p-6 bg-white rounded-xl border border-border">
+              <div className="p-6 bg-background-secondary rounded-xl border border-border">
                 <h3 className="font-semibold text-lg mb-6">Kontakt</h3>
 
                 <div className="space-y-4">

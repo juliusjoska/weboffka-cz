@@ -4,6 +4,11 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'O nás | Weboffka',
   description: 'Weboffka - malé webové studio bez zbytečností. Moderní weby, čistý kód, férové ceny.',
+  openGraph: {
+    title: 'O nás | Weboffka',
+    description: 'Weboffka - malé webové studio bez zbytečností. Moderní weby, čistý kód, férové ceny.',
+    url: 'https://weboffka.cz/o-nas',
+  },
 }
 
 export default function ONasPage() {
@@ -22,7 +27,7 @@ export default function ONasPage() {
             </div>
 
             {/* Story */}
-            <div className="prose prose-lg max-w-none">
+            <div className="prose prose-lg prose-invert prose-headings:text-foreground prose-p:text-muted prose-li:text-muted prose-a:text-accent prose-strong:text-foreground max-w-none">
               <p>
                 Jsme malý tým, který dělá weby na míru. Žádná velká agentura,
                 žádná byrokracie — prostě lidi, co umí web a chtějí ho udělat dobře.

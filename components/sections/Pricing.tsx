@@ -51,7 +51,7 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section className="section bg-white" id="cenik">
+    <section className="section bg-background-secondary" id="cenik">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -84,12 +84,12 @@ export function Pricing() {
               className={`p-6 rounded-xl border-2 ${
                 plan.popular
                   ? 'border-accent bg-accent/5'
-                  : 'border-border bg-white'
+                  : 'border-border bg-background-secondary'
               }`}
             >
               {plan.popular && (
                 <div className="text-center mb-4">
-                  <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-white rounded-full">
+                  <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-background rounded-full">
                     Nejoblíbenější
                   </span>
                 </div>

@@ -5,6 +5,11 @@ import { Globe, RefreshCw, ShoppingBag, Wrench, Check } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Služby | Weboffka',
   description: 'Webové stránky na míru, redesign, e-commerce a správa webů. Kompletní webové služby od návrhu po spuštění.',
+  openGraph: {
+    title: 'Služby | Weboffka',
+    description: 'Webové stránky na míru, redesign, e-commerce a správa webů. Kompletní webové služby od návrhu po spuštění.',
+    url: 'https://weboffka.cz/sluzby',
+  },
 }
 
 const services = [
@@ -90,7 +95,7 @@ export default function SluzbyPage() {
                   </Link>
                 </div>
 
-                <div className={`p-6 bg-white rounded-xl border border-border ${index % 2 === 1 ? 'md:order-1' : ''}`}>
+                <div className={`p-6 bg-background-secondary rounded-xl border border-border ${index % 2 === 1 ? 'md:order-1' : ''}`}>
                   <h3 className="font-semibold mb-4">Co zahrnuje:</h3>
                   <ul className="space-y-3">
                     {service.features.map((feature) => (
@@ -108,13 +113,13 @@ export default function SluzbyPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-foreground text-white">
+      <section className="py-16 bg-accent/10 border-t border-border">
         <div className="container text-center">
           <h2 className="heading-2 mb-4">Nevíte, co potřebujete?</h2>
-          <p className="text-white/70 mb-8">
+          <p className="text-muted mb-8">
             Napište nám a probereme to. Poradíme nezávazně a zdarma.
           </p>
-          <Link href="/kontakt" className="btn bg-accent hover:bg-accent-dark text-white">
+          <Link href="/kontakt" className="btn-primary">
             Domluvit konzultaci
           </Link>
         </div>

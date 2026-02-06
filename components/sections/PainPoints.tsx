@@ -24,7 +24,7 @@ const painPoints = [
 
 export function PainPoints() {
   return (
-    <section className="section bg-white">
+    <section className="section bg-background-secondary">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,7 @@ export function PainPoints() {
               className="p-6 bg-background rounded-xl border border-border"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
                   <X className="text-red-500" size={20} />
                 </div>
                 <div>

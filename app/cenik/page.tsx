@@ -5,6 +5,11 @@ import { Check } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Ceník | Weboffka',
   description: 'Transparentní ceny webových stránek. Bez skrytých poplatků.',
+  openGraph: {
+    title: 'Ceník | Weboffka',
+    description: 'Transparentní ceny webových stránek. Bez skrytých poplatků.',
+    url: 'https://weboffka.cz/cenik',
+  },
 }
 
 const plans = [
@@ -103,12 +108,12 @@ export default function CenikPage() {
                 className={`p-6 rounded-xl border-2 ${
                   plan.popular
                     ? 'border-accent bg-accent/5'
-                    : 'border-border bg-white'
+                    : 'border-border bg-background-secondary'
                 }`}
               >
                 {plan.popular && (
                   <div className="text-center mb-4">
-                    <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-white rounded-full">
+                    <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-background rounded-full">
                       Nejoblíbenější
                     </span>
                   </div>
@@ -145,7 +150,7 @@ export default function CenikPage() {
           </div>
 
           {/* Monthly management */}
-          <div className="max-w-3xl mx-auto p-8 bg-white rounded-xl border border-border mb-16">
+          <div className="max-w-3xl mx-auto p-8 bg-background-secondary rounded-xl border border-border mb-16">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div>
                 <h3 className="font-bold text-xl mb-2">Měsíční správa</h3>
@@ -166,7 +171,7 @@ export default function CenikPage() {
             <h2 className="heading-2 text-center mb-8">Časté otázky</h2>
             <div className="space-y-4">
               {faqs.map((faq) => (
-                <div key={faq.q} className="p-6 bg-white rounded-xl border border-border">
+                <div key={faq.q} className="p-6 bg-background-secondary rounded-xl border border-border">
                   <h3 className="font-semibold mb-2">{faq.q}</h3>
                   <p className="text-muted">{faq.a}</p>
                 </div>
@@ -177,13 +182,13 @@ export default function CenikPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-foreground text-white">
+      <section className="py-16 bg-accent/10 border-t border-border">
         <div className="container text-center">
           <h2 className="heading-2 mb-4">Máte konkrétní požadavky?</h2>
-          <p className="text-white/70 mb-8">
+          <p className="text-muted mb-8">
             Napište mi a dostanete přesnou nabídku na míru.
           </p>
-          <Link href="/kontakt" className="btn bg-accent hover:bg-accent-dark text-white">
+          <Link href="/kontakt" className="btn-primary">
             Získat nabídku
           </Link>
         </div>

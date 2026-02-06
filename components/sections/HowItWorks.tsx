@@ -27,7 +27,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="section bg-white" id="jak-to-funguje">
+    <section className="section bg-background-secondary" id="jak-to-funguje">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,7 @@ export function HowItWorks() {
               )}
 
               {/* Number */}
-              <div className="relative z-10 w-16 h-16 mx-auto mb-4 rounded-full bg-foreground text-white flex items-center justify-center text-2xl font-bold">
+              <div className="relative z-10 w-16 h-16 mx-auto mb-4 rounded-full bg-accent text-background flex items-center justify-center text-2xl font-bold">
                 {step.number}
               </div>
 

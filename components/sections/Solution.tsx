@@ -38,7 +38,7 @@ export function Solution() {
           transition={{ duration: 0.6 }}
           className="text-center mb-6"
         >
-          <div className="inline-block px-6 py-3 bg-foreground text-white rounded-full mb-8">
+          <div className="inline-block px-6 py-3 bg-accent text-background rounded-full mb-8">
             <span className="font-medium">
               Vypněte starosti. Zapněte web.
             </span>
@@ -65,9 +65,9 @@ export function Solution() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="flex items-start gap-4 p-6 bg-white rounded-xl border border-border hover:shadow-lg transition-shadow"
+              className="flex items-start gap-4 p-6 bg-background-secondary rounded-xl border border-border hover:shadow-lg transition-shadow"
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center">
                 <Check className="text-green-600" size={24} />
               </div>
               <div className="flex-1">
