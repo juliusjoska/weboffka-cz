@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'O nás | Weboffka',
-  description: 'Weboffka - webař bez zbytečností. Moderní weby, čistý kód, férové ceny.',
+  description: 'Weboffka - fullstack development bez zbytečností. Weby, aplikace, čistý kód, férové ceny.',
   openGraph: {
     title: 'O nás | Weboffka',
-    description: 'Weboffka - webař bez zbytečností. Moderní weby, čistý kód, férové ceny.',
+    description: 'Weboffka - fullstack development bez zbytečností. Weby, aplikace, čistý kód, férové ceny.',
     url: 'https://weboffka.cz/o-nas',
   },
 }
@@ -25,48 +25,48 @@ export default function ONasPage() {
                 alt="Weboffka"
                 width={320}
                 height={90}
-                className="h-24 w-auto mx-auto mb-6"
+                className="h-28 w-auto mx-auto mb-6"
               />
               <h1 className="heading-1 mb-2">Weboffka</h1>
-              <p className="text-xl text-muted">Webař bez zbytečností.</p>
+              <p className="text-xl text-muted">Fullstack development bez zbytečností.</p>
             </div>
 
             {/* Story */}
             <div className="prose prose-lg prose-invert prose-headings:text-foreground prose-p:text-muted prose-li:text-muted prose-a:text-accent prose-strong:text-foreground max-w-none">
               <p>
-                Jsem webař, který dělá weby na míru. Žádná velká agentura,
-                žádná byrokracie — prostě člověk, co umí web a chce ho udělat dobře.
+                Za Weboffkou stojí fullstack developer s více než 8 lety zkušeností.
+                Žádná velká agentura, žádná byrokracie — prostě kvalitní vývoj
+                od člověka, který rozumí celému stacku.
               </p>
 
               <p>
-                <strong>Weboffka</strong> vznikla z frustrace. Viděl jsem, jak agentury
-                natahují projekty a freelanceři mizí uprostřed práce. Tak jsem to
-                začal dělat jinak.
+                <strong>Weboffka</strong> vznikla z frustrace. Agentury natahují projekty,
+                freelanceři mizí uprostřed práce. Tady se to dělá jinak.
               </p>
 
               <p>
-                Komunikujete přímo se mnou, ne s account managerem.
+                Komunikujete přímo s vývojářem, ne s account managerem.
                 Osobní přístup, profesionální výsledek.
               </p>
 
-              <h2>Jak pracuju</h2>
+              <h2>Jak pracujeme</h2>
 
               <ul>
                 <li>
-                  <strong>Moderní technologie</strong> — Používám Next.js, React, Tailwind CSS
-                  a další nástroje, které zajistí rychlý a bezpečný web.
+                  <strong>Moderní technologie</strong> — Next.js, React, Flutter, Tailwind CSS,
+                  Supabase a další nástroje, které zajistí rychlý a bezpečný výsledek.
                 </li>
                 <li>
-                  <strong>Čistý kód</strong> — Píšu kód, který se dá snadno udržovat
+                  <strong>Čistý kód</strong> — Kód, který se dá snadno udržovat
                   a rozšiřovat. Žádné hacky a dirty fixes.
                 </li>
                 <li>
-                  <strong>Přímá komunikace</strong> — Mluvím česky, ne IT žargonem.
-                  Vysvětlím vše srozumitelně.
+                  <strong>Přímá komunikace</strong> — Česky, ne IT žargonem.
+                  Všechno srozumitelně a na rovinu.
                 </li>
                 <li>
-                  <strong>Dodržuju termíny</strong> — Když řeknu dva týdny, myslím
-                  dva týdny. Ne dva měsíce.
+                  <strong>Dodržené termíny</strong> — Když řekneme dva týdny,
+                  jsou to dva týdny. Ne dva měsíce.
                 </li>
               </ul>
 
@@ -78,12 +78,11 @@ export default function ONasPage() {
                 A to zdvojené <em>ff</em>? To prostě vypadá dobře.
               </p>
 
-              <h2>Co dělám</h2>
+              <h2>Co děláme</h2>
 
               <p>
-                Specializuju se na weby pro malé a střední firmy, OSVČ a startupy.
-                Landing pages, firemní prezentace, e-shopy — všechno na míru,
-                žádné šablony.
+                Weby, webové aplikace, mobilní appky. Pro malé a střední firmy,
+                OSVČ a startupy. Všechno na míru, žádné šablony.
               </p>
             </div>
 

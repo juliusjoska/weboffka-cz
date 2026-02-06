@@ -6,7 +6,7 @@ const steps = [
   {
     number: '1',
     title: 'Ozvěte se',
-    description: 'Napište mi o vašem projektu. Odpovím do 24 hodin.',
+    description: 'Napište nám o vašem projektu. Odpovíme do 24 hodin.',
   },
   {
     number: '2',
@@ -21,7 +21,7 @@ const steps = [
   {
     number: '4',
     title: 'Spouštíme',
-    description: 'Web jde online. Já se o něj starám dál.',
+    description: 'Web jde online. Weboffka se o něj stará dál.',
   },
 ]
 

@@ -83,7 +83,7 @@ export default function GDPRPage() {
 
             <h2>9. Kontakt</h2>
             <p>
-              V případě dotazů ohledně zpracování osobních údajů mě
+              V případě dotazů ohledně zpracování osobních údajů nás
               kontaktujte na{' '}
               <a href="mailto:info@weboffka.cz">info@weboffka.cz</a>.
             </p>

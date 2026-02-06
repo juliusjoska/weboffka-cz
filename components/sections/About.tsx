@@ -29,7 +29,7 @@ export function About() {
               alt="Weboffka"
               width={240}
               height={68}
-              className="h-20 w-auto mx-auto md:mx-0 mb-6"
+              className="h-24 w-auto mx-auto md:mx-0 mb-6"
             />
 
             {/* Stats */}
@@ -52,15 +52,15 @@ export function About() {
           >
             <h2 className="heading-2 mb-4">Kdo za tím stojí</h2>
             <p className="text-lg text-muted mb-4">
-              Jsem webař, který dělá weby na míru.
+              Za Weboffkou stojí fullstack developer s 8+ lety zkušeností.
             </p>
             <p className="text-muted mb-4">
-              Žádná byrokracie, žádné zbytečné meetingy. Prostě moderní
+              Žádná byrokracie, žádné zbytečné meetingy. Moderní
               technologie, čistý kód a přímá komunikace.
             </p>
             <p className="text-muted mb-6">
-              Mám zkušenosti z agentur i freelance projektů. Vím,
-              co funguje a co ne. A dělám to po svém.
+              Zkušenosti z agentur i vlastních projektů. Weby, aplikace,
+              backendy — všechno pod jednou střechou.
             </p>
             <Link href="/o-nas" className="text-accent font-medium hover:underline">
               Více o nás →

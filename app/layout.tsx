@@ -8,13 +8,13 @@ const inter = Inter({ subsets: ['latin', 'latin-ext'], display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'Weboffka | Webovky bez starostí',
-  description: 'Moderní webové stránky na míru. Bez WordPressu, bez komplikací, bez IT žargonu. Váš osobní webař pro firmy a podnikatele.',
+  description: 'Moderní weby a aplikace na míru. Bez WordPressu, bez komplikací, bez zbytečností. Fullstack development pro firmy a podnikatele.',
   keywords: 'tvorba webových stránek, webové stránky na míru, moderní web design, web pro firmy',
   authors: [{ name: 'Julius Joska' }],
   icons: { icon: '/favicon.ico' },
   openGraph: {
     title: 'Weboffka | Webovky bez starostí',
-    description: 'Moderní webové stránky na míru. Váš osobní webař.',
+    description: 'Moderní weby a aplikace na míru. Fullstack development bez zbytečností.',
     url: 'https://weboffka.cz',
     siteName: 'Weboffka',
     locale: 'cs_CZ',

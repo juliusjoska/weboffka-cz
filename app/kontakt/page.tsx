@@ -67,8 +67,8 @@ export default function KontaktPage() {
           >
             <h1 className="heading-1 mb-4">Pojďme si promluvit</h1>
             <p className="text-lg text-muted max-w-2xl mx-auto">
-              Popište mi váš projekt. Co potřebujete, pro koho to je, jaký máte rozpočet.
-              Čím víc mi řeknete, tím přesnější nabídku dostanete.
+              Popište nám váš projekt. Co potřebujete, pro koho to je, jaký máte rozpočet.
+              Čím víc nám řeknete, tím přesnější nabídku dostanete.
             </p>
           </motion.div>
 
@@ -84,7 +84,7 @@ export default function KontaktPage() {
                 <div className="p-8 bg-green-500/10 rounded-xl text-center">
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2">Díky!</h3>
-                  <p className="text-muted">Ozvu se do 24 hodin.</p>
+                  <p className="text-muted">Ozveme se do 24 hodin.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -259,8 +259,8 @@ export default function KontaktPage() {
                 <hr className="my-6" />
 
                 <p className="text-sm text-muted">
-                  Odpovídám do 24 hodin v pracovní dny.
-                  Preferuju email — můžu si v klidu rozmyslet odpověď.
+                  Odpovídáme do 24 hodin v pracovní dny.
+                  Preferujeme email — můžeme si v klidu rozmyslet odpověď.
                 </p>
               </div>
             </motion.div>

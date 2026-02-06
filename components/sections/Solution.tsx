@@ -12,7 +12,7 @@ const solutions = [
   {
     icon: User,
     title: 'Přímá komunikace',
-    description: 'Komunikujete přímo se mnou. Žádné předávání přes account managery.',
+    description: 'Komunikujete přímo s vývojářem. Žádné předávání přes account managery.',
   },
   {
     icon: DollarSign,
@@ -52,8 +52,8 @@ export function Solution() {
           transition={{ delay: 0.1, duration: 0.6 }}
           className="text-center text-lg text-muted max-w-2xl mx-auto mb-12"
         >
-          Jeden člověk, velký výsledek.
-          Dělám weby, které fungují — a vy se můžete soustředit na byznys.
+          Weboffka = kvalita bez zbytečností.
+          Weby a appky, které fungují — a vy se můžete soustředit na byznys.
         </motion.p>
 
         {/* Solutions Grid */}

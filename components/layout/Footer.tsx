@@ -20,7 +20,7 @@ export function Footer() {
               alt="Weboffka"
               width={160}
               height={45}
-              className="h-14 w-auto mb-3"
+              className="h-16 w-auto mb-3"
             />
             <p className="text-sm text-muted mb-4">
               Moderní weby pro firmy, které chtějí růst.
@@ -28,7 +28,7 @@ export function Footer() {
             <div className="text-xs text-muted/60 space-y-1">
               <p>Julius Joska - ajtak.it</p>
               <p>IČO: 24409979</p>
-              <p>Nejsem plátce DPH</p>
+              <p>Neplátce DPH</p>
             </div>
           </div>
 
