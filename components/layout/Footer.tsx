@@ -5,7 +5,7 @@ const navLinks = [
   { href: '/sluzby', label: 'Služby' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/cenik', label: 'Ceník' },
-  { href: '/o-nas', label: 'O mně' },
+  { href: '/o-nas', label: 'O nás' },
   { href: '/kontakt', label: 'Kontakt' },
 ]
 
@@ -20,7 +20,7 @@ export function Footer() {
               alt="Weboffka"
               width={160}
               height={45}
-              className="h-12 w-auto mb-3"
+              className="h-14 w-auto mb-3"
             />
             <p className="text-sm text-muted mb-4">
               Moderní weby pro firmy, které chtějí růst.

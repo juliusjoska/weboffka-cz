@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import nodemailer from 'nodemailer'
 
 const RATE_LIMIT_WINDOW = 60 * 1000
 const MAX_REQUESTS = 5
@@ -48,9 +49,6 @@ export async function POST(request: Request) {
       )
     }
 
-    // Send ntfy notification
-    const ntfyUrl = process.env.NTFY_URL || 'https://ntfy.sh/weboffka-kontakt'
-
     const body = [
       `Jméno: ${data.name}`,
       `Email: ${data.email}`,
@@ -62,18 +60,60 @@ export async function POST(request: Request) {
       data.message,
     ].filter(Boolean).join('\n')
 
-    try {
-      await fetch(ntfyUrl, {
-        method: 'POST',
-        headers: {
-          'Title': `Nova poptavka - ${data.name}`,
-          'Tags': 'incoming_envelope',
-          'Priority': '4',
-        },
-        body,
-      })
-    } catch (ntfyError) {
-      console.error('Ntfy notification failed:', ntfyError)
+    // Send ntfy notification
+    const ntfyUrl = process.env.NTFY_URL
+    if (ntfyUrl) {
+      try {
+        await fetch(ntfyUrl, {
+          method: 'POST',
+          headers: {
+            'Title': `Nova poptavka - ${data.name}`,
+            'Tags': 'incoming_envelope',
+            'Priority': '4',
+          },
+          body,
+        })
+      } catch (ntfyError) {
+        console.error('Ntfy notification failed:', ntfyError)
+      }
+    }
+
+    // Send email notification
+    const smtpHost = process.env.SMTP_HOST
+    const smtpUser = process.env.SMTP_USERNAME
+    const smtpPass = process.env.SMTP_PASSWORD
+    const contactEmail = process.env.CONTACT_EMAIL
+
+    if (smtpHost && smtpUser && smtpPass && contactEmail) {
+      try {
+        const transporter = nodemailer.createTransport({
+          host: smtpHost,
+          port: Number(process.env.SMTP_PORT) || 465,
+          secure: true,
+          auth: { user: smtpUser, pass: smtpPass },
+        })
+
+        await transporter.sendMail({
+          from: `"Weboffka" <${smtpUser}>`,
+          to: contactEmail,
+          replyTo: data.email,
+          subject: `Nová poptávka - ${data.name}`,
+          text: body,
+          html: `
+            <h2>Nová poptávka z weboffka.cz</h2>
+            <p><strong>Jméno:</strong> ${data.name}</p>
+            <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
+            ${data.website ? `<p><strong>Web:</strong> ${data.website}</p>` : ''}
+            ${data.budget ? `<p><strong>Rozpočet:</strong> ${data.budget}</p>` : ''}
+            ${data.timeline ? `<p><strong>Termín:</strong> ${data.timeline}</p>` : ''}
+            <hr>
+            <p><strong>Zpráva:</strong></p>
+            <p>${data.message.replace(/\n/g, '<br>')}</p>
+          `.trim(),
+        })
+      } catch (emailError) {
+        console.error('Email notification failed:', emailError)
+      }
     }
 
     console.log('Contact form submission:', {

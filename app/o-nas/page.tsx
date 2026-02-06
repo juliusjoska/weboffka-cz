@@ -3,11 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'O mně | Weboffka',
-  description: 'Julius Joska - webař bez zbytečností. Moderní weby, čistý kód, férové ceny.',
+  title: 'O nás | Weboffka',
+  description: 'Weboffka - webař bez zbytečností. Moderní weby, čistý kód, férové ceny.',
   openGraph: {
-    title: 'O mně | Weboffka',
-    description: 'Julius Joska - webař bez zbytečností. Moderní weby, čistý kód, férové ceny.',
+    title: 'O nás | Weboffka',
+    description: 'Weboffka - webař bez zbytečností. Moderní weby, čistý kód, férové ceny.',
     url: 'https://weboffka.cz/o-nas',
   },
 }
@@ -25,7 +25,7 @@ export default function ONasPage() {
                 alt="Weboffka"
                 width={320}
                 height={90}
-                className="h-20 w-auto mx-auto mb-6"
+                className="h-24 w-auto mx-auto mb-6"
               />
               <h1 className="heading-1 mb-2">Weboffka</h1>
               <p className="text-xl text-muted">Webař bez zbytečností.</p>

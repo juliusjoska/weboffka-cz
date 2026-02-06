@@ -29,7 +29,7 @@ export function About() {
               alt="Weboffka"
               width={240}
               height={68}
-              className="h-16 w-auto mx-auto md:mx-0 mb-6"
+              className="h-20 w-auto mx-auto md:mx-0 mb-6"
             />
 
             {/* Stats */}
@@ -63,7 +63,7 @@ export function About() {
               co funguje a co ne. A dělám to po svém.
             </p>
             <Link href="/o-nas" className="text-accent font-medium hover:underline">
-              Více o mně →
+              Více o nás →
             </Link>
           </motion.div>
         </div>

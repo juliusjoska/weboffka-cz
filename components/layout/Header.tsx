@@ -9,7 +9,7 @@ const navLinks = [
   { href: '/sluzby', label: 'Služby' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/cenik', label: 'Ceník' },
-  { href: '/o-nas', label: 'O mně' },
+  { href: '/o-nas', label: 'O nás' },
 ]
 
 export function Header() {
@@ -36,7 +36,7 @@ export function Header() {
               alt="Weboffka"
               width={180}
               height={50}
-              className="h-12 md:h-14 w-auto"
+              className="h-14 md:h-16 w-auto"
               priority
             />
           </Link>
