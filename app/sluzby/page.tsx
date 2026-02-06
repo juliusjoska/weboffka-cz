@@ -52,7 +52,7 @@ const services = [
   {
     icon: Wrench,
     title: 'Správa & podpora',
-    description: 'Starost o web přenechte nám.',
+    description: 'Starost o web přenechte mně.',
     features: [
       'Hosting a SSL',
       'Pravidelné aktualizace',
@@ -117,7 +117,7 @@ export default function SluzbyPage() {
         <div className="container text-center">
           <h2 className="heading-2 mb-4">Nevíte, co potřebujete?</h2>
           <p className="text-muted mb-8">
-            Napište nám a probereme to. Poradíme nezávazně a zdarma.
+            Napište mi a probereme to. Poradím nezávazně a zdarma.
           </p>
           <Link href="/kontakt" className="btn-primary">
             Domluvit konzultaci

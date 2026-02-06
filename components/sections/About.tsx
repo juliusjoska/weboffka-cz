@@ -47,18 +47,18 @@ export function About() {
           >
             <h2 className="heading-2 mb-4">Kdo za tím stojí</h2>
             <p className="text-lg text-muted mb-4">
-              Jsme malé studio, které dělá weby na míru.
+              Jsem webař, který dělá weby na míru.
             </p>
             <p className="text-muted mb-4">
               Žádná byrokracie, žádné zbytečné meetingy. Prostě moderní
               technologie, čistý kód a přímá komunikace.
             </p>
             <p className="text-muted mb-6">
-              Máme zkušenosti z agentur i freelance projektů. Víme,
-              co funguje a co ne. A děláme to po svém.
+              Mám zkušenosti z agentur i freelance projektů. Vím,
+              co funguje a co ne. A dělám to po svém.
             </p>
             <Link href="/o-nas" className="text-accent font-medium hover:underline">
-              Více o nás →
+              Více o mně →
             </Link>
           </motion.div>
         </div>

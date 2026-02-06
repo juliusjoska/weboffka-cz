@@ -64,19 +64,19 @@ const plans = [
 const faqs = [
   {
     q: 'Jak dlouho trvá vytvoření webu?',
-    a: 'Standardně 2-4 týdny podle rozsahu. One-page web zvládnu i rychleji, pokud je potřeba.',
+    a: 'Standardně 2–4 týdny podle rozsahu. One-page web zvládnu i rychleji, pokud je potřeba.',
   },
   {
-    q: 'Co potřebujete od nás?',
-    a: 'Texty, fotky, logo (pokud máte). Pokud nemáte, pomůžeme s copywritingem nebo doporučíme specialistu na fotky/grafiku.',
+    q: 'Co potřebujete ode mě?',
+    a: 'Texty, fotky, logo (pokud máte). Pokud nemáte, pomůžu s copywritingem nebo doporučím specialistu na fotky/grafiku.',
   },
   {
     q: 'Mohu si web později upravovat sám?',
-    a: 'Ano, pokud chcete. Pro jednodušší úpravy nastavíme CMS. Nebo to děláme my za vás v rámci měsíční správy.',
+    a: 'Ano, pokud chcete. Pro jednodušší úpravy nastavím CMS. Nebo to dělám já za vás v rámci měsíční správy.',
   },
   {
     q: 'Co hosting a doména?',
-    a: 'Hosting je v ceně měsíční správy (od 990 Kč/měsíc). Doménu si registrujete sami (doporučíme kde), pomůžeme s nastavením.',
+    a: 'Hosting je v ceně měsíční správy (od 990 Kč/měsíc). Doménu si registrujete sami (doporučím kde), pomůžu s nastavením.',
   },
   {
     q: 'Jak probíhá platba?',
@@ -84,7 +84,7 @@ const faqs = [
   },
   {
     q: 'Co když nebudeme spokojeni?',
-    a: 'Revizní kola jsou v ceně. Pokud ani po nich nebudete spokojeni, vrátíme zálohu.',
+    a: 'Revizní kola jsou v ceně. Pokud ani po nich nebudete spokojeni, vrátím zálohu.',
   },
 ]
 

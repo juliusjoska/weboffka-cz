@@ -5,7 +5,7 @@ const navLinks = [
   { href: '/sluzby', label: 'Služby' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/cenik', label: 'Ceník' },
-  { href: '/o-nas', label: 'O nás' },
+  { href: '/o-nas', label: 'O mně' },
   { href: '/kontakt', label: 'Kontakt' },
 ]
 
@@ -28,7 +28,7 @@ export function Footer() {
             <div className="text-xs text-muted/60 space-y-1">
               <p>Julius Joska - ajtak.it</p>
               <p>IČO: 24409979</p>
-              <p>Nejsme plátci DPH</p>
+              <p>Nejsem plátce DPH</p>
             </div>
           </div>
 

@@ -9,7 +9,7 @@ export function Hero() {
       <div className="container">
         <div className="max-w-3xl">
           <p className="text-accent font-medium mb-4">
-            Webové studio
+            Váš osobní webař
           </p>
 
           <h1 className="heading-1 mb-6">
@@ -17,8 +17,8 @@ export function Hero() {
           </h1>
 
           <p className="text-xl text-muted max-w-2xl mb-10">
-            Děláme moderní weby, které fungují a vydělávají.
-            Bez WordPressu. Bez šablon. Bez zbytečné byrokracie.
+            Dělám moderní weby, které fungují a vydělávají.
+            Bez WordPressu. Bez šablon. Bez zbytečností.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">

@@ -2,11 +2,11 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'O nás | Weboffka',
-  description: 'Weboffka - malé webové studio bez zbytečností. Moderní weby, čistý kód, férové ceny.',
+  title: 'O mně | Weboffka',
+  description: 'Julius Joska - webař bez zbytečností. Moderní weby, čistý kód, férové ceny.',
   openGraph: {
-    title: 'O nás | Weboffka',
-    description: 'Weboffka - malé webové studio bez zbytečností. Moderní weby, čistý kód, férové ceny.',
+    title: 'O mně | Weboffka',
+    description: 'Julius Joska - webař bez zbytečností. Moderní weby, čistý kód, férové ceny.',
     url: 'https://weboffka.cz/o-nas',
   },
 }
@@ -23,44 +23,44 @@ export default function ONasPage() {
                 we<span className="opacity-80">ff</span>
               </div>
               <h1 className="heading-1 mb-2">Weboffka</h1>
-              <p className="text-xl text-muted">Webové studio bez zbytečností.</p>
+              <p className="text-xl text-muted">Webař bez zbytečností.</p>
             </div>
 
             {/* Story */}
             <div className="prose prose-lg prose-invert prose-headings:text-foreground prose-p:text-muted prose-li:text-muted prose-a:text-accent prose-strong:text-foreground max-w-none">
               <p>
-                Jsme malý tým, který dělá weby na míru. Žádná velká agentura,
-                žádná byrokracie — prostě lidi, co umí web a chtějí ho udělat dobře.
+                Jsem webař, který dělá weby na míru. Žádná velká agentura,
+                žádná byrokracie — prostě člověk, co umí web a chce ho udělat dobře.
               </p>
 
               <p>
-                <strong>Weboffka</strong> vznikla z frustrace. Viděli jsme, jak agentury
-                natahují projekty a freelanceři mizí uprostřed práce. Tak jsme to
-                začali dělat jinak.
+                <strong>Weboffka</strong> vznikla z frustrace. Viděl jsem, jak agentury
+                natahují projekty a freelanceři mizí uprostřed práce. Tak jsem to
+                začal dělat jinak.
               </p>
 
               <p>
-                Kombinujeme to nejlepší z obou světů: osobní přístup freelancera
-                a profesionalitu studia. Komunikujete přímo s námi, ne s account managerem.
+                Komunikujete přímo se mnou, ne s account managerem.
+                Osobní přístup, profesionální výsledek.
               </p>
 
-              <h2>Jak pracujeme</h2>
+              <h2>Jak pracuju</h2>
 
               <ul>
                 <li>
-                  <strong>Moderní technologie</strong> — Používáme Next.js, React, Tailwind CSS
+                  <strong>Moderní technologie</strong> — Používám Next.js, React, Tailwind CSS
                   a další nástroje, které zajistí rychlý a bezpečný web.
                 </li>
                 <li>
-                  <strong>Čistý kód</strong> — Píšeme kód, který se dá snadno udržovat
+                  <strong>Čistý kód</strong> — Píšu kód, který se dá snadno udržovat
                   a rozšiřovat. Žádné hacky a dirty fixes.
                 </li>
                 <li>
-                  <strong>Přímá komunikace</strong> — Mluvíme česky, ne IT žargonem.
-                  Vysvětlíme vše srozumitelně.
+                  <strong>Přímá komunikace</strong> — Mluvím česky, ne IT žargonem.
+                  Vysvětlím vše srozumitelně.
                 </li>
                 <li>
-                  <strong>Dodržujeme termíny</strong> — Když řekneme dva týdny, myslíme
+                  <strong>Dodržuju termíny</strong> — Když řeknu dva týdny, myslím
                   dva týdny. Ne dva měsíce.
                 </li>
               </ul>
@@ -73,10 +73,10 @@ export default function ONasPage() {
                 A to zdvojené <em>ff</em>? To prostě vypadá dobře.
               </p>
 
-              <h2>Co děláme</h2>
+              <h2>Co dělám</h2>
 
               <p>
-                Specializujeme se na weby pro malé a střední firmy, OSVČ a startupy.
+                Specializuju se na weby pro malé a střední firmy, OSVČ a startupy.
                 Landing pages, firemní prezentace, e-shopy — všechno na míru,
                 žádné šablony.
               </p>
@@ -85,7 +85,7 @@ export default function ONasPage() {
             {/* CTA */}
             <div className="mt-12 text-center">
               <Link href="/kontakt" className="btn-primary text-lg px-8">
-                Pojďme spolupracovat
+                Pojďme na to
               </Link>
             </div>
           </div>

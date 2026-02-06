@@ -25,7 +25,7 @@ const services = [
   {
     icon: Wrench,
     title: 'Správa & podpora',
-    description: 'Hosting, aktualizace, úpravy, analytika. Vy podnikáte, my se staráme o web.',
+    description: 'Hosting, aktualizace, úpravy, analytika. Vy podnikáte, já se starám o web.',
     price: 'od 990 Kč/měsíc',
   },
 ]
@@ -35,7 +35,7 @@ export function Services() {
     <section className="section bg-background-secondary" id="sluzby">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="heading-2 mb-4">Co děláme</h2>
+          <h2 className="heading-2 mb-4">Co dělám</h2>
           <p className="text-muted max-w-2xl mx-auto">
             Kompletní webové služby od návrhu po spuštění a správu.
           </p>
