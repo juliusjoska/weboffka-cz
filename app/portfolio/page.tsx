@@ -1,106 +1,212 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { ExternalLink } from 'lucide-react'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Portfolio | Weboffka',
-  description: 'Ukázky webových projektů. Landing pages, firemní prezentace, e-commerce.',
-  openGraph: {
-    title: 'Portfolio | Weboffka',
-    description: 'Ukázky webových projektů. Landing pages, firemní prezentace, e-commerce.',
-    url: 'https://weboffka.cz/portfolio',
-  },
-}
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowRight, Globe, ShoppingCart, Rocket } from 'lucide-react'
 
 const projects = [
   {
-    title: 'Sepot',
-    category: 'E-commerce',
-    description: 'Moderní e-shop s potravinami s důrazem na uživatelský zážitek.',
-    image: '/images/portfolio/placeholder.jpg',
-    link: '#',
+    title: 'FiremníSoft.cz',
+    category: 'Firemní prezentace',
+    description: 'Profesionální web pro firmu specializující se na vývoj podnikového softwaru. Moderní tmavý design s důrazem na důvěryhodnost.',
+    tags: ['Next.js', 'React', 'Tailwind CSS'],
+    icon: Globe,
+    color: 'from-blue-500 to-cyan-500',
   },
   {
-    title: 'Moje Obec',
-    category: 'SaaS',
-    description: 'Platforma pro správu obecních webů a komunikaci s občany.',
-    image: '/images/portfolio/placeholder.jpg',
-    link: '#',
+    title: 'ChciAppku.cz',
+    category: 'Firemní prezentace',
+    description: 'Webová prezentace pro služby vývoje mobilních aplikací. Konverzně orientovaný design s interaktivními prvky.',
+    tags: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
+    icon: Rocket,
+    color: 'from-rose-500 to-violet-500',
   },
   {
-    title: 'Tastly',
-    category: 'Aplikace',
-    description: 'Mobilní aplikace pro sdílení a objevování receptů.',
-    image: '/images/portfolio/placeholder.jpg',
-    link: '#',
+    title: 'VývojAplikacíNaMíru.cz',
+    category: 'Landing page',
+    description: 'Konverzní landing page pro služby vývoje aplikací na míru. Důraz na CTA prvky a přehlednost nabídky.',
+    tags: ['Next.js', 'TypeScript', 'Framer Motion'],
+    icon: Rocket,
+    color: 'from-amber-500 to-orange-500',
+  },
+  {
+    title: 'SoftNaMíru.cz',
+    category: 'Firemní prezentace',
+    description: 'Web pro zakázkový vývoj softwaru. Čistý design komunikující profesionalitu a technickou expertízu.',
+    tags: ['Next.js', 'React', 'Tailwind CSS'],
+    icon: Globe,
+    color: 'from-emerald-500 to-teal-500',
+  },
+  {
+    title: 'Vyvinuto.cz',
+    category: 'Firemní prezentace',
+    description: 'Prezentace vývojářského studia. Minimalistický design s důrazem na portfolio a reference.',
+    tags: ['Next.js', 'Framer Motion', 'TypeScript'],
+    icon: Globe,
+    color: 'from-indigo-500 to-purple-500',
+  },
+  {
+    title: 'E-shop pro řemeslníka',
+    category: 'E-shop',
+    description: 'Online obchod pro lokálního řemeslníka. Katalog produktů, košík, platební brána a správa objednávek.',
+    tags: ['Next.js', 'Stripe', 'Supabase'],
+    icon: ShoppingCart,
+    color: 'from-lime-500 to-green-500',
   },
 ]
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.5, ease: 'easeOut' as const },
+  }),
+}
+
 export default function PortfolioPage() {
   return (
-    <div className="pt-20">
-      <section className="section">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h1 className="heading-1 mb-4">Portfolio</h1>
-            <p className="text-lg text-muted max-w-2xl mx-auto">
-              Výběr projektů, na které jsme hrdí. Každý projekt je příběh.
-            </p>
-          </div>
+    <div className="pt-24 md:pt-32">
+      {/* Hero */}
+      <section className="section pt-8 md:pt-12">
+        <div className="container text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-accent font-medium mb-4"
+          >
+            Naše práce mluví za nás
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="heading-1 mb-6"
+          >
+            Naše{' '}
+            <span className="text-gradient">portfolio</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted text-lg max-w-2xl mx-auto"
+          >
+            Podívejte se na ukázky webů, které jsme vytvořili pro naše
+            klienty. Každý projekt je unikátní a šitý na míru.
+          </motion.p>
+        </div>
+      </section>
 
-          {/* Projects grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {projects.map((project) => (
-              <div
+      {/* Projects Grid */}
+      <section className="section pt-0">
+        <div className="container">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project, i) => (
+              <motion.div
                 key={project.title}
-                className="group bg-background-secondary rounded-xl border border-border overflow-hidden hover:shadow-lg transition-shadow"
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="card-hover group overflow-hidden"
               >
-                {/* Image placeholder */}
-                <div className="aspect-video bg-background relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-muted">
-                    [Screenshot]
-                  </div>
+                <div className={`h-32 rounded-xl bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity mb-5 flex items-center justify-center`}>
+                  <project.icon size={48} className="text-white opacity-60" />
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <span className="text-xs font-medium text-accent uppercase tracking-wide">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent font-medium">
                     {project.category}
                   </span>
-                  <h3 className="font-bold text-xl mt-2 mb-2">{project.title}</h3>
-                  <p className="text-muted mb-4">{project.description}</p>
-                  <a
-                    href={project.link}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
-                  >
-                    Zobrazit projekt <ExternalLink size={14} />
-                  </a>
                 </div>
-              </div>
+
+                <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs px-2 py-1 rounded-md border border-border text-muted"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Note */}
-          <div className="text-center mt-12">
-            <p className="text-muted">
-              Některé projekty nemůžeme zveřejnit kvůli NDA.
-              <br />
-              Pokud chcete vidět více, napište nám.
-            </p>
+      {/* Stats */}
+      <section className="section bg-background-secondary">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="heading-2 mb-4">Čísla, která mluví</h2>
+            <p className="text-muted">Výsledky naší dosavadní práce.</p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { value: '50+', label: 'Dokončených projektů' },
+              { value: '100%', label: 'Weby na míru' },
+              { value: '0', label: 'WordPress šablon' },
+              { value: '∞', label: 'Nadšení pro tvorbu' },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="text-center py-8"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
+                  {stat.value}
+                </div>
+                <p className="text-sm text-muted">{stat.label}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-accent/10 border-t border-border">
-        <div className="container text-center">
-          <h2 className="heading-2 mb-4">Chcete podobný web?</h2>
-          <p className="text-muted mb-8">
-            Napište nám o vašem projektu a uděláme něco skvělého.
-          </p>
-          <Link href="/kontakt" className="btn-primary">
-            Začít projekt
-          </Link>
+      <section className="section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="card-glass gradient-border text-center py-16 px-8"
+          >
+            <h2 className="heading-2 mb-4">
+              Chcete být dalším úspěšným projektem?
+            </h2>
+            <p className="text-muted text-lg max-w-xl mx-auto mb-8">
+              Napište nám a ukážeme vám, jak by mohl vypadat váš nový web.
+              Konzultace je zdarma a bez závazků.
+            </p>
+            <Link href="/kontakt" className="btn-primary text-lg px-8 py-4">
+              Chci svůj web
+              <ArrowRight size={20} className="ml-2" />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

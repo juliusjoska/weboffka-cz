@@ -1,64 +1,77 @@
 'use client'
 
-import Link from 'next/link'
-import { Globe, RefreshCw, ShoppingBag, Wrench } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Building2, Target, ShoppingCart, User, Paintbrush, Headphones } from 'lucide-react'
 
 const services = [
   {
-    icon: Globe,
-    title: 'Weby na míru',
-    description: 'Landing pages, firemní prezentace, portfolia. Každý web je originál, žádné šablony.',
-    price: 'od 19.900 Kč',
+    icon: Building2,
+    title: 'Firemní prezentace',
+    description: 'Moderní web pro vaši firmu — o nás, služby, kontakt. Profesionální online vizitka, která prodává.',
   },
   {
-    icon: RefreshCw,
-    title: 'Redesign',
-    description: 'Modernizace zastaralého webu. Migrace z WordPressu na moderní stack.',
-    price: 'od 29.900 Kč',
+    icon: Target,
+    title: 'Landing pages',
+    description: 'Konverzní stránky pro kampaně a produkty. Jeden cíl, maximální výsledek.',
   },
   {
-    icon: ShoppingBag,
-    title: 'E-commerce',
-    description: 'Jednoduchý e-shop nebo katalog produktů. Napojení na platební brány.',
-    price: 'od 49.900 Kč',
+    icon: ShoppingCart,
+    title: 'E-shopy',
+    description: 'Online prodej s platebními bránami a správou objednávek. Vše pod jednou střechou.',
   },
   {
-    icon: Wrench,
-    title: 'Správa & podpora',
-    description: 'Hosting, aktualizace, úpravy, analytika. Vy podnikáte, Weboffka se stará o web.',
-    price: 'od 990 Kč/měsíc',
+    icon: User,
+    title: 'Osobní weby',
+    description: 'Portfolio, blog, CV — pro freelancery a kreativce. Ukažte světu, co umíte.',
+  },
+  {
+    icon: Paintbrush,
+    title: 'Redesign webu',
+    description: 'Modernizace zastaralého webu. Nový design, vyšší rychlost, lepší zážitek.',
+  },
+  {
+    icon: Headphones,
+    title: 'Správa a podpora',
+    description: 'Hosting, aktualizace, SEO, analytika. O váš web se postaráme i po spuštění.',
   },
 ]
 
 export function Services() {
   return (
-    <section className="section bg-background-secondary" id="sluzby">
+    <section id="sluzby" className="section">
       <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="heading-2 mb-4">Služby</h2>
-          <p className="text-muted max-w-2xl mx-auto">
-            Kompletní webové služby od návrhu po spuštění a správu.
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="heading-2 mb-4">
+            Co pro vás <span className="text-gradient">můžeme udělat</span>
+          </h2>
+          <p className="text-muted text-lg max-w-2xl mx-auto">
+            Nabízíme kompletní služby od návrhu po spuštění a následnou podporu.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {services.map((service) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <motion.div
               key={service.title}
-              className="p-6 bg-background rounded-xl border border-border hover:border-accent/50 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="card-hover group"
             >
-              <service.icon className="text-accent mb-4" size={28} />
-              <h3 className="font-semibold text-xl mb-2">{service.title}</h3>
-              <p className="text-muted mb-4">{service.description}</p>
-              <p className="font-semibold text-accent">{service.price}</p>
-            </div>
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                <service.icon className="w-6 h-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+              <p className="text-muted">{service.description}</p>
+            </motion.div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Link href="/sluzby" className="btn-outline">
-            Více o službách
-          </Link>
         </div>
       </div>
     </section>

@@ -1,196 +1,296 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { Check } from 'lucide-react'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Ceník | Weboffka',
-  description: 'Transparentní ceny webových stránek. Bez skrytých poplatků.',
-  openGraph: {
-    title: 'Ceník | Weboffka',
-    description: 'Transparentní ceny webových stránek. Bez skrytých poplatků.',
-    url: 'https://weboffka.cz/cenik',
-  },
-}
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { Check, ArrowRight, ChevronDown } from 'lucide-react'
+import { useState } from 'react'
 
 const plans = [
   {
-    name: 'Start',
-    price: '19.900',
-    description: 'One-page vizitka',
+    name: 'Vizitka',
+    price: '14 900',
+    description: 'Ideální pro živnostníky a malé firmy, které potřebují jednoduchou online prezentaci.',
+    delivery: 'Do 2 týdnů',
     features: [
-      'One-page web',
+      'Jednostránkový web',
       'Responzivní design',
       'Kontaktní formulář',
       'SEO základ',
-      '1 revizní kolo',
-      'Dodání do 2 týdnů',
+      'SSL certifikát',
+      'Hosting na 1 rok zdarma',
     ],
-    notIncluded: ['Blog', 'CMS', 'E-commerce'],
-    popular: false,
+    highlighted: false,
   },
   {
     name: 'Business',
-    price: '39.900',
-    description: 'Plná prezentace',
+    price: '39 900',
+    description: 'Pro firmy, které chtějí profesionální web s blogem, analytikou a plnou SEO optimalizací.',
+    delivery: 'Do 4 týdnů',
     features: [
-      'Multi-page web (5+ stránek)',
-      'Vše ze Start',
-      'Pokročilé animace',
-      'Blog sekce (volitelně)',
-      '2 revizní kola',
-      'Dodání do 3 týdnů',
+      'Vícestránkový web (až 10 stran)',
+      'Responzivní design na míru',
+      'Blog s administrací',
+      'Pokročilá SEO optimalizace',
+      'Google Analytics a Search Console',
+      'Kontaktní formulář s notifikacemi',
+      'Integrace sociálních sítí',
+      'SSL certifikát',
+      'Hosting na 1 rok zdarma',
     ],
-    notIncluded: ['E-commerce', 'Rezervační systém'],
-    popular: true,
+    highlighted: true,
   },
   {
-    name: 'Premium',
-    price: '69.900',
-    description: 'Komplexní řešení',
+    name: 'E-shop',
+    price: '79 900',
+    description: 'Kompletní online obchod s platebními bránami, správou produktů a objednávek.',
+    delivery: 'Do 6 týdnů',
     features: [
-      'Komplexní web',
-      'Vše z Business',
-      'E-commerce light / rezervace',
-      'CMS pro správu obsahu',
-      '3 revizní kola',
-      'Prioritní podpora',
-      'Dodání do 4 týdnů',
+      'Online obchod na míru',
+      'Platební brány (Stripe, GoPay)',
+      'Správa produktů a kategorií',
+      'Sledování objednávek',
+      'Automatické emaily zákazníkům',
+      'Pokročilá SEO optimalizace',
+      'Napojení na účetní systémy',
+      'Responzivní design',
+      'SSL certifikát',
+      'Hosting na 1 rok zdarma',
     ],
-    notIncluded: [],
-    popular: false,
+    highlighted: false,
   },
 ]
 
 const faqs = [
   {
-    q: 'Jak dlouho trvá vytvoření webu?',
-    a: 'Standardně 2–4 týdny podle rozsahu. One-page web zvládnu i rychleji, pokud je potřeba.',
+    question: 'Jak dlouho trvá vytvoření webu?',
+    answer:
+      'Záleží na rozsahu projektu. Jednoduchý jednostránkový web zvládneme do 2 týdnů, vícestránkový business web do 4 týdnů a e-shop do 6 týdnů. Přesný termín domluvíme po úvodní konzultaci.',
   },
   {
-    q: 'Co potřebujete od nás?',
-    a: 'Texty, fotky, logo (pokud máte). Pokud nemáte, pomůžeme s copywritingem nebo doporučíme specialistu na fotky/grafiku.',
+    question: 'Potřebuji WordPress?',
+    answer:
+      'Ne. Tvoříme weby pomocí moderních technologií (React, Next.js), které jsou rychlejší, bezpečnější a nevyžadují neustálé aktualizace jako WordPress. Správu obsahu řešíme přes jednoduchý CMS systém.',
   },
   {
-    q: 'Mohu si web později upravovat sám?',
-    a: 'Ano, pokud chcete. Pro jednodušší úpravy nastavíme CMS. Nebo to děláme za vás v rámci měsíční správy.',
+    question: 'Budu web vlastnit?',
+    answer:
+      'Ano, web je plně váš. Po dokončení projektu vám předáme kompletní zdrojový kód a přístupy ke všemu. Můžete si web spravovat sami nebo využít naši správu.',
   },
   {
-    q: 'Co hosting a doména?',
-    a: 'Hosting je v ceně měsíční správy (od 990 Kč/měsíc). Doménu si registrujete sami (doporučíme kde), pomůžeme s nastavením.',
+    question: 'Co hosting a doména?',
+    answer:
+      'V ceně každého balíčku je hosting na 1 rok zdarma. Doménu vám pomůžeme zaregistrovat, nebo napojíme vaši stávající. Po prvním roce stojí hosting od 200 Kč/měsíc.',
   },
   {
-    q: 'Jak probíhá platba?',
-    a: '50% záloha před zahájením, 50% po dokončení. Faktura, platba převodem.',
+    question: 'Děláte i SEO?',
+    answer:
+      'Ano. Základní SEO optimalizace (meta tagy, rychlost, struktura) je součástí každého webu. V balíčku Business a E-shop je pokročilá SEO optimalizace včetně napojení na Google Search Console.',
   },
   {
-    q: 'Co když nebudeme spokojeni?',
-    a: 'Revizní kola jsou v ceně. Pokud ani po nich nebudete spokojeni, vrátíme zálohu.',
+    question: 'Nabízíte podporu po spuštění?',
+    answer:
+      'Ano. Po spuštění webu máte 30 dní bezplatné podpory pro drobné úpravy. Dále nabízíme měsíční paušál na správu, aktualizace a technickou podporu od 1 500 Kč/měsíc.',
   },
 ]
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.5, ease: 'easeOut' as const },
+  }),
+}
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div className="border-b border-border last:border-0">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between py-5 text-left hover:text-accent transition-colors"
+      >
+        <span className="font-medium pr-4">{question}</span>
+        <ChevronDown
+          size={20}
+          className={`shrink-0 text-muted transition-transform duration-300 ${
+            isOpen ? 'rotate-180 text-accent' : ''
+          }`}
+        />
+      </button>
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className="overflow-hidden"
+      >
+        <p className="text-muted text-sm leading-relaxed pb-5">{answer}</p>
+      </motion.div>
+    </div>
+  )
+}
+
 export default function CenikPage() {
   return (
-    <div className="pt-20">
-      <section className="section">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h1 className="heading-1 mb-4">Ceník</h1>
-            <p className="text-lg text-muted max-w-2xl mx-auto">
-              Férové ceny, žádná překvapení. Víte přesně, co dostanete.
-            </p>
-          </div>
+    <div className="pt-24 md:pt-32">
+      {/* Hero */}
+      <section className="section pt-8 md:pt-12">
+        <div className="container text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-accent font-medium mb-4"
+          >
+            Transparentní ceny
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="heading-1 mb-6"
+          >
+            Kolik stojí{' '}
+            <span className="text-gradient">nový web?</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted text-lg max-w-2xl mx-auto"
+          >
+            Férové ceny bez skrytých poplatků. Vyberte si balíček, který
+            odpovídá vašim potřebám, nebo nám napište a připravíme nabídku
+            na míru.
+          </motion.p>
+        </div>
+      </section>
 
-          {/* Pricing cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
-            {plans.map((plan) => (
-              <div
+      {/* Pricing Cards */}
+      <section className="section pt-0">
+        <div className="container">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {plans.map((plan, i) => (
+              <motion.div
                 key={plan.name}
-                className={`p-6 rounded-xl border-2 ${
-                  plan.popular
-                    ? 'border-accent bg-accent/5'
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className={`relative p-8 rounded-2xl border ${
+                  plan.highlighted
+                    ? 'gradient-border bg-background-secondary'
                     : 'border-border bg-background-secondary'
-                }`}
+                } flex flex-col`}
               >
-                {plan.popular && (
-                  <div className="text-center mb-4">
-                    <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-background rounded-full">
-                      Nejoblíbenější
-                    </span>
+                {plan.highlighted && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-bold rounded-full bg-gradient-accent text-background">
+                    Nejoblíbenější
                   </div>
                 )}
-
-                <div className="text-center mb-6">
-                  <h2 className="font-bold text-xl mb-1">{plan.name}</h2>
+                <div className="mb-6">
+                  <h2 className="text-xl font-bold mb-2">{plan.name}</h2>
                   <p className="text-muted text-sm mb-4">{plan.description}</p>
-                  <div className="text-4xl font-bold">
-                    {plan.price}
-                    <span className="text-base font-normal text-muted"> Kč</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-sm text-muted">od</span>
+                    <span className="text-4xl font-bold text-gradient">
+                      {plan.price}
+                    </span>
+                    <span className="text-muted">Kč</span>
                   </div>
+                  <p className="text-sm text-muted mt-2">{plan.delivery}</p>
                 </div>
-
-                <ul className="space-y-3 mb-6">
+                <ul className="flex-1 space-y-3 mb-8">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <Check className="text-green-500 flex-shrink-0 mt-0.5" size={16} />
-                      <span className="text-sm">{feature}</span>
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm"
+                    >
+                      <Check
+                        size={16}
+                        className="text-accent mt-0.5 shrink-0"
+                      />
+                      <span className="text-muted">{feature}</span>
                     </li>
                   ))}
                 </ul>
-
                 <Link
                   href="/kontakt"
-                  className={`btn w-full justify-center ${
-                    plan.popular ? 'btn-primary' : 'btn-outline'
-                  }`}
+                  className={
+                    plan.highlighted ? 'btn-primary w-full' : 'btn-outline w-full'
+                  }
                 >
                   Mám zájem
+                  <ArrowRight size={18} className="ml-2" />
                 </Link>
-              </div>
+              </motion.div>
             ))}
           </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="text-center text-muted text-sm mt-8"
+          >
+            Všechny ceny jsou uvedeny bez DPH. Nejsme plátci DPH.
+          </motion.p>
+        </div>
+      </section>
 
-          {/* Monthly management */}
-          <div className="max-w-3xl mx-auto p-8 bg-background-secondary rounded-xl border border-border mb-16">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div>
-                <h3 className="font-bold text-xl mb-2">Měsíční správa</h3>
-                <p className="text-muted">
-                  Hosting, aktualizace, drobné úpravy, analytika
-                </p>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  od 990 <span className="text-base font-normal text-muted">Kč/měsíc</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* FAQ */}
-          <div className="max-w-3xl mx-auto">
-            <h2 className="heading-2 text-center mb-8">Časté otázky</h2>
-            <div className="space-y-4">
-              {faqs.map((faq) => (
-                <div key={faq.q} className="p-6 bg-background-secondary rounded-xl border border-border">
-                  <h3 className="font-semibold mb-2">{faq.q}</h3>
-                  <p className="text-muted">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* FAQ */}
+      <section className="section">
+        <div className="container max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="heading-2 mb-4">Časté otázky</h2>
+            <p className="text-muted">
+              Odpovědi na otázky, které dostáváme nejčastěji.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="card"
+          >
+            {faqs.map((faq) => (
+              <FaqItem key={faq.question} {...faq} />
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-accent/10 border-t border-border">
-        <div className="container text-center">
-          <h2 className="heading-2 mb-4">Máte konkrétní požadavky?</h2>
-          <p className="text-muted mb-8">
-            Napište mi a dostanete přesnou nabídku na míru.
-          </p>
-          <Link href="/kontakt" className="btn-primary">
-            Získat nabídku
-          </Link>
+      <section className="section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="card-glass gradient-border text-center py-16 px-8"
+          >
+            <h2 className="heading-2 mb-4">
+              Potřebujete něco jiného?
+            </h2>
+            <p className="text-muted text-lg max-w-xl mx-auto mb-8">
+              Každý projekt je unikátní. Napište nám a připravíme
+              individuální nabídku přesně pro vás. Konzultace je zdarma.
+            </p>
+            <Link href="/kontakt" className="btn-primary text-lg px-8 py-4">
+              Chci nabídku na míru
+              <ArrowRight size={20} className="ml-2" />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

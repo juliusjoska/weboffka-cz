@@ -1,127 +1,218 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { Globe, RefreshCw, ShoppingBag, Wrench, Check } from 'lucide-react'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Služby | Weboffka',
-  description: 'Webové stránky na míru, redesign, e-commerce a správa webů. Kompletní webové služby od návrhu po spuštění.',
-  openGraph: {
-    title: 'Služby | Weboffka',
-    description: 'Webové stránky na míru, redesign, e-commerce a správa webů. Kompletní webové služby od návrhu po spuštění.',
-    url: 'https://weboffka.cz/sluzby',
-  },
-}
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import {
+  Globe,
+  Rocket,
+  ShoppingCart,
+  User,
+  RefreshCw,
+  Wrench,
+  Check,
+  ArrowRight,
+} from 'lucide-react'
 
 const services = [
   {
     icon: Globe,
-    title: 'Weby na míru',
-    description: 'Originální webové stránky bez šablon. Každý projekt je unikátní.',
+    title: 'Firemní prezentace',
+    description:
+      'Moderní web, který reprezentuje vaši firmu na úrovni. Responzivní design, SEO optimalizace a jednoduchá správa obsahu přes CMS.',
     features: [
-      'Landing pages pro kampaně',
-      'Firemní prezentace',
-      'Portfolio a osobní weby',
-      'Produktové stránky',
+      'Responzivní design na všechna zařízení',
+      'SEO optimalizace pro vyhledávače',
+      'Správa obsahu přes CMS',
+      'Kontaktní formulář s notifikacemi',
+      'Napojení na Google Analytics',
+      'SSL certifikát a rychlý hosting',
     ],
-    price: 'od 19.900 Kč',
+  },
+  {
+    icon: Rocket,
+    title: 'Landing pages',
+    description:
+      'Konverzní stránky navržené tak, aby přeměnily návštěvníky na zákazníky. Rychlé dodání, A/B testování a měření výkonu.',
+    features: [
+      'Design zaměřený na konverze',
+      'A/B testování variant',
+      'Rychlé dodání do 7 dní',
+      'Napojení na reklamní systémy',
+      'Optimalizace rychlosti načítání',
+      'Call-to-action elementy',
+    ],
+  },
+  {
+    icon: ShoppingCart,
+    title: 'E-shopy',
+    description:
+      'Kompletní online obchod s platebními bránami, správou produktů a objednávek. Integrace se Shopify nebo vlastní řešení.',
+    features: [
+      'Shopify integrace nebo vlastní řešení',
+      'Platební brány (Stripe, GoPay)',
+      'Správa produktů a kategorií',
+      'Sledování objednávek',
+      'Automatické emaily zákazníkům',
+      'Napojení na účetní systémy',
+    ],
+  },
+  {
+    icon: User,
+    title: 'Osobní weby',
+    description:
+      'Portfolio, blog nebo CV stránka pro kreativce a freelancery. Unikátní design, který vás odliší od konkurence.',
+    features: [
+      'Unikátní design na míru',
+      'Portfolio galerie s filtry',
+      'Blog s kategoriemi a tagy',
+      'Kontaktní formulář',
+      'Sociální sítě integrace',
+      'Rychlé načítání a SEO',
+    ],
   },
   {
     icon: RefreshCw,
-    title: 'Redesign',
-    description: 'Modernizace zastaralého webu. Nový vzhled, lepší výkon.',
+    title: 'Redesign webu',
+    description:
+      'Váš web vypadá zastarale? Provedeme audit, navrhneme nový design, migrujeme obsah a zrychlíme načítání.',
     features: [
-      'Analýza současného stavu',
+      'Audit stávajícího webu',
       'Nový moderní design',
-      'Migrace z WordPressu',
-      'SEO optimalizace',
+      'Migrace veškerého obsahu',
+      'Zrychlení načítání stránek',
+      'Vylepšení SEO a přístupnosti',
+      'Zachování stávajícího URL schématu',
     ],
-    price: 'od 29.900 Kč',
-  },
-  {
-    icon: ShoppingBag,
-    title: 'E-commerce light',
-    description: 'Jednoduchý e-shop nebo katalog produktů.',
-    features: [
-      'Katalog produktů',
-      'Shopify integrace',
-      'Platební brány',
-      'Správa objednávek',
-    ],
-    price: 'od 49.900 Kč',
   },
   {
     icon: Wrench,
-    title: 'Správa & podpora',
-    description: 'Starost o web přenechte nám.',
+    title: 'Správa a podpora',
+    description:
+      'Nemusíte se o nic starat. Postaráme se o hosting, SSL, zálohy, aktualizace a průběžnou SEO optimalizaci.',
     features: [
-      'Hosting a SSL',
-      'Pravidelné aktualizace',
-      'Drobné úpravy obsahu',
-      'Analytika a reporting',
+      'Spolehlivý hosting a SSL',
+      'Pravidelné zálohy dat',
+      'Aktualizace a bezpečnostní opravy',
+      'Průběžná SEO optimalizace',
+      'Monitoring dostupnosti 24/7',
+      'Prioritní technická podpora',
     ],
-    price: 'od 990 Kč/měsíc',
   },
 ]
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.5, ease: 'easeOut' as const },
+  }),
+}
+
 export default function SluzbyPage() {
   return (
-    <div className="pt-20">
-      <section className="section">
+    <div className="pt-24 md:pt-32">
+      {/* Hero */}
+      <section className="section pt-8 md:pt-12">
+        <div className="container text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-accent font-medium mb-4"
+          >
+            Co pro vás umíme
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="heading-1 mb-6"
+          >
+            Naše{' '}
+            <span className="text-gradient">služby</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-muted text-lg max-w-2xl mx-auto"
+          >
+            Od jednoduchého osobního webu po komplexní e-shop. Všechno děláme
+            na míru, bez šablon a bez WordPressu.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="section pt-0">
         <div className="container">
-          <div className="text-center mb-12">
-            <h1 className="heading-1 mb-4">Služby</h1>
-            <p className="text-lg text-muted max-w-2xl mx-auto">
-              Kompletní webové služby od návrhu po spuštění a správu.
-            </p>
-          </div>
-
-          <div className="space-y-12 max-w-4xl mx-auto">
-            {services.map((service, index) => (
-              <div
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((service, i) => (
+              <motion.div
                 key={service.title}
-                className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${
-                  index % 2 === 1 ? 'md:flex-row-reverse' : ''
-                }`}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="card-hover group"
               >
-                <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                  <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-4">
-                    <service.icon className="text-accent" size={32} />
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
+                    <service.icon size={28} />
                   </div>
-                  <h2 className="heading-3 mb-2">{service.title}</h2>
-                  <p className="text-muted mb-4">{service.description}</p>
-                  <p className="text-2xl font-bold text-accent mb-4">{service.price}</p>
-                  <Link href="/kontakt" className="btn-primary">
-                    Mám zájem
-                  </Link>
+                  <div>
+                    <h2 className="heading-3 text-xl md:text-2xl mb-2">
+                      {service.title}
+                    </h2>
+                    <p className="text-muted text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-
-                <div className={`p-6 bg-background-secondary rounded-xl border border-border ${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                  <h3 className="font-semibold mb-4">Co zahrnuje:</h3>
-                  <ul className="space-y-3">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3">
-                        <Check className="text-green-500 flex-shrink-0" size={18} />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {service.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm text-muted"
+                    >
+                      <Check
+                        size={16}
+                        className="text-accent mt-0.5 shrink-0"
+                      />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-accent/10 border-t border-border">
-        <div className="container text-center">
-          <h2 className="heading-2 mb-4">Nevíte, co potřebujete?</h2>
-          <p className="text-muted mb-8">
-            Napište nám a probereme to. Poradíme nezávazně a zdarma.
-          </p>
-          <Link href="/kontakt" className="btn-primary">
-            Domluvit konzultaci
-          </Link>
+      <section className="section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="card-glass gradient-border text-center py-16 px-8"
+          >
+            <h2 className="heading-2 mb-4">
+              Nevíte, co přesně potřebujete?
+            </h2>
+            <p className="text-muted text-lg max-w-xl mx-auto mb-8">
+              Nevadí. Napište nám a společně vymyslíme, jaký web bude pro
+              vás ten pravý. Konzultace je zdarma.
+            </p>
+            <Link href="/kontakt" className="btn-primary text-lg px-8 py-4">
+              Nezávazná konzultace
+              <ArrowRight size={20} className="ml-2" />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

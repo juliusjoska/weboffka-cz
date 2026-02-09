@@ -2,8 +2,9 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './lib/**/*.{ts,tsx}',
   ],
   theme: {
     extend: {
@@ -11,21 +12,23 @@ const config: Config = {
         background: {
           DEFAULT: '#0a0a0a',
           secondary: '#141414',
+          tertiary: '#1a1a1a',
         },
         foreground: '#fafafa',
         muted: '#888888',
         accent: {
           DEFAULT: '#c8ff00',
+          light: '#d4ff33',
           dark: '#a8d900',
         },
         border: '#222222',
       },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+      backgroundImage: {
+        'gradient-accent': 'linear-gradient(135deg, #c8ff00, #22c55e, #06b6d4)',
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
 
 export default config
