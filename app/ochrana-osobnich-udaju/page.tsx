@@ -8,19 +8,19 @@ export const metadata: Metadata = {
 
 export default function OchranaOsobnichUdajuPage() {
   return (
-    <div className="container section pt-32">
-      <h1 className="heading-2 mb-4">Ochrana osobních údajů</h1>
-      <p className="text-muted mb-10">Účinnost od 1. února 2026</p>
+    <div className="w-container w-section pt-32">
+      <h1 className="w-heading mb-4">Ochrana osobních údajů</h1>
+      <p className="text-text-secondary mb-10">Účinnost od 1. února 2026</p>
 
-      <div className="prose prose-invert prose-lime max-w-none prose-headings:text-foreground prose-p:text-muted prose-li:text-muted prose-strong:text-foreground prose-a:text-accent hover:prose-a:text-accent-light">
+      <div className="prose-dark">
         <h2>1. Správce osobních údajů</h2>
         <p>
           Správcem osobních údajů je <strong>Julius Joska — ajtak.it</strong>, IČO: 24409979,
           se sídlem v Praze, zapsaný v živnostenském rejstříku (dále jen &quot;správce&quot;).
         </p>
         <p>
-          Kontaktní e-mail: <a href="mailto:info@ajtak.it">info@ajtak.it</a><br />
-          Telefon: +420 775 305 305<br />
+          Kontaktní e-mail: <a href="mailto:julius.joska@weboffka.cz">julius.joska@weboffka.cz</a><br />
+          Telefon: +420 731 860 594<br />
           Web: <a href="https://weboffka.cz">weboffka.cz</a>
         </p>
 
@@ -75,7 +75,7 @@ export default function OchranaOsobnichUdajuPage() {
         </ul>
         <p>
           Pro uplatnění svých práv nás kontaktujte na e-mailu{' '}
-          <a href="mailto:info@ajtak.it">info@ajtak.it</a>. Na vaši žádost odpovíme
+          <a href="mailto:julius.joska@weboffka.cz">julius.joska@weboffka.cz</a>. Na vaši žádost odpovíme
           nejpozději do 30 dnů.
         </p>
 

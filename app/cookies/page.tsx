@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 
 export default function CookiesPage() {
   return (
-    <div className="container section pt-32">
-      <h1 className="heading-2 mb-4">Zásady používání cookies</h1>
-      <p className="text-muted mb-10">Účinnost od 1. února 2026</p>
+    <div className="w-container w-section pt-32">
+      <h1 className="w-heading mb-4">Zásady používání cookies</h1>
+      <p className="text-text-secondary mb-10">Účinnost od 1. února 2026</p>
 
-      <div className="prose prose-invert prose-lime max-w-none prose-headings:text-foreground prose-p:text-muted prose-li:text-muted prose-strong:text-foreground prose-a:text-accent hover:prose-a:text-accent-light prose-th:text-foreground prose-td:text-muted">
+      <div className="prose-dark">
         <h2>1. Co jsou cookies</h2>
         <p>
           Cookies jsou malé textové soubory, které se ukládají do vašeho prohlížeče

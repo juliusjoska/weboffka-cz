@@ -1,15 +1,31 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { CookieBanner } from '@/components/layout/CookieBanner'
 
-const inter = Inter({ subsets: ['latin', 'latin-ext'], display: 'swap' })
+const inter = Inter({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-jetbrains',
+})
 
 export const metadata: Metadata = {
   title: {
-    default: 'Weboffka.cz | Webové stránky na míru pro každého',
+    default: 'Weboffka.cz — Weby, které fungují',
     template: '%s | Weboffka.cz',
   },
   description: 'Tvoříme moderní webové stránky na míru. Od osobních webů přes firemní prezentace po e-shopy. Bez WordPressu, bez komplikací. Český tým, férové ceny.',
@@ -19,7 +35,7 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.ico' },
   metadataBase: new URL('https://weboffka.cz'),
   openGraph: {
-    title: 'Weboffka.cz | Webové stránky na míru pro každého',
+    title: 'Weboffka.cz — Weby, které fungují',
     description: 'Moderní weby na míru. Od osobních webů po e-shopy. Bez WordPressu, bez komplikací.',
     url: 'https://weboffka.cz',
     siteName: 'Weboffka.cz',
@@ -31,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="cs">
+    <html lang="cs" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <body className={inter.className}>
         <script
           type="application/ld+json"
@@ -39,11 +55,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ProfessionalService',
-              name: 'Weboffka.cz - ajtak.it',
+              name: 'Weboffka.cz — ajtak.it',
               url: 'https://weboffka.cz',
-              email: 'info@ajtak.it',
-              telephone: '+420 775 305 305',
-              description: 'Tvorba moderních webových stránek na míru. Od osobních webů přes firemní prezentace po e-shopy.',
+              email: 'julius.joska@weboffka.cz',
+              telephone: '+420 731 860 594',
+              description: 'Tvorba moderních webových stránek na míru.',
               founder: { '@type': 'Person', name: 'Julius Joska' },
               address: { '@type': 'PostalAddress', addressLocality: 'Praha', addressCountry: 'CZ' },
               priceRange: 'od 14 900 Kč',

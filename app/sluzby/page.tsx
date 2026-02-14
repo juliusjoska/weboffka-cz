@@ -11,6 +11,7 @@ import {
   Wrench,
   Check,
   ArrowRight,
+  Phone,
 } from 'lucide-react'
 
 const services = [
@@ -113,30 +114,29 @@ export default function SluzbyPage() {
   return (
     <div className="pt-24 md:pt-32">
       {/* Hero */}
-      <section className="section pt-8 md:pt-12">
-        <div className="container text-center">
+      <section className="w-section-sm pt-8 md:pt-12">
+        <div className="w-container text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-accent font-medium mb-4"
+            className="w-label mb-4"
           >
-            Co pro vás umíme
+            Služby
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="heading-1 mb-6"
+            className="w-heading mb-6"
           >
-            Naše{' '}
-            <span className="text-gradient">služby</span>
+            Co pro vás můžeme udělat
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-muted text-lg max-w-2xl mx-auto"
+            className="text-body-lg text-text-secondary max-w-2xl mx-auto"
           >
             Od jednoduchého osobního webu po komplexní e-shop. Všechno děláme
             na míru, bez šablon a bez WordPressu.
@@ -144,11 +144,12 @@ export default function SluzbyPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="section pt-0">
-        <div className="container">
+      {/* Services — alternating layout */}
+      <section className="w-section pt-0">
+        <div className="w-container space-y-12">
+          {/* Row 1: 2 columns */}
           <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, i) => (
+            {services.slice(0, 2).map((service, i) => (
               <motion.div
                 key={service.title}
                 custom={i}
@@ -156,17 +157,15 @@ export default function SluzbyPage() {
                 whileInView="visible"
                 viewport={{ once: true, margin: '-50px' }}
                 variants={fadeUp}
-                className="card-hover group"
+                className="w-card-interactive"
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
+                  <div className="p-3 rounded-xl bg-lime-dim text-lime shrink-0">
                     <service.icon size={28} />
                   </div>
                   <div>
-                    <h2 className="heading-3 text-xl md:text-2xl mb-2">
-                      {service.title}
-                    </h2>
-                    <p className="text-muted text-sm leading-relaxed">
+                    <h2 className="w-subheading mb-2">{service.title}</h2>
+                    <p className="text-text-secondary text-sm leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -175,12 +174,9 @@ export default function SluzbyPage() {
                   {service.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start gap-2 text-sm text-muted"
+                      className="flex items-start gap-2 text-sm text-text-secondary"
                     >
-                      <Check
-                        size={16}
-                        className="text-accent mt-0.5 shrink-0"
-                      />
+                      <Check size={16} className="text-lime mt-0.5 shrink-0" />
                       {feature}
                     </li>
                   ))}
@@ -188,30 +184,169 @@ export default function SluzbyPage() {
               </motion.div>
             ))}
           </div>
+
+          {/* Row 2: full-width E-shopy */}
+          <motion.div
+            custom={2}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={fadeUp}
+            className="w-card-interactive"
+          >
+            <div className="flex items-start gap-5 mb-6">
+              <div className="p-3 rounded-xl bg-lime-dim text-lime shrink-0">
+                <ShoppingCart size={28} />
+              </div>
+              <div>
+                <h2 className="w-subheading mb-2">{services[2].title}</h2>
+                <p className="text-text-secondary text-body-lg max-w-2xl">
+                  {services[2].description}
+                </p>
+              </div>
+            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {services[2].features.map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-start gap-2 text-sm text-text-secondary"
+                >
+                  <Check size={16} className="text-lime mt-0.5 shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Row 3: asymmetric — Osobní weby (wider) + Redesign */}
+          <div className="grid md:grid-cols-5 gap-8">
+            <motion.div
+              custom={3}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={fadeUp}
+              className="w-card-interactive md:col-span-3"
+            >
+              <div className="flex items-start gap-4 mb-6">
+                <div className="p-3 rounded-xl bg-lime-dim text-lime shrink-0">
+                  <User size={28} />
+                </div>
+                <div>
+                  <h2 className="w-subheading mb-2">{services[3].title}</h2>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {services[3].description}
+                  </p>
+                </div>
+              </div>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {services[3].features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-start gap-2 text-sm text-text-secondary"
+                  >
+                    <Check size={16} className="text-lime mt-0.5 shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div
+              custom={4}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={fadeUp}
+              className="w-card-interactive md:col-span-2"
+            >
+              <div className="flex items-start gap-4 mb-6">
+                <div className="p-3 rounded-xl bg-lime-dim text-lime shrink-0">
+                  <RefreshCw size={28} />
+                </div>
+                <div>
+                  <h2 className="w-subheading mb-2">{services[4].title}</h2>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {services[4].description}
+                  </p>
+                </div>
+              </div>
+              <ul className="space-y-2">
+                {services[4].features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-start gap-2 text-sm text-text-secondary"
+                  >
+                    <Check size={16} className="text-lime mt-0.5 shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Row 4: full-width Správa a podpora */}
+          <motion.div
+            custom={5}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={fadeUp}
+            className="w-card-interactive"
+          >
+            <div className="flex items-start gap-5 mb-6">
+              <div className="p-3 rounded-xl bg-lime-dim text-lime shrink-0">
+                <Wrench size={28} />
+              </div>
+              <div>
+                <h2 className="w-subheading mb-2">{services[5].title}</h2>
+                <p className="text-text-secondary text-body-lg max-w-2xl">
+                  {services[5].description}
+                </p>
+              </div>
+            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {services[5].features.map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-start gap-2 text-sm text-text-secondary"
+                >
+                  <Check size={16} className="text-lime mt-0.5 shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section">
-        <div className="container">
+      <section className="w-section">
+        <div className="w-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="card-glass gradient-border text-center py-16 px-8"
+            className="w-card-glass text-center py-16 px-8 relative overflow-hidden"
           >
-            <h2 className="heading-2 mb-4">
-              Nevíte, co přesně potřebujete?
-            </h2>
-            <p className="text-muted text-lg max-w-xl mx-auto mb-8">
-              Nevadí. Napište nám a společně vymyslíme, jaký web bude pro
-              vás ten pravý. Konzultace je zdarma.
-            </p>
-            <Link href="/kontakt" className="btn-primary text-lg px-8 py-4">
-              Nezávazná konzultace
-              <ArrowRight size={20} className="ml-2" />
-            </Link>
+            <div className="w-mesh-gradient absolute inset-0" />
+            <div className="relative z-10">
+              <h2 className="w-heading mb-4">Máte zájem?</h2>
+              <p className="text-text-secondary text-body-lg max-w-xl mx-auto mb-4">
+                Napište nám a společně vymyslíme, jaký web bude pro vás ten
+                pravý. Konzultace je zdarma.
+              </p>
+              <p className="text-text-secondary text-sm mb-8 flex items-center justify-center gap-2">
+                <Phone size={16} className="text-lime" />
+                <a href="tel:+420731860594" className="hover:text-lime transition-colors">
+                  +420 731 860 594
+                </a>
+              </p>
+              <Link href="/kontakt" className="w-btn-primary">
+                Nezávazná konzultace
+                <ArrowRight size={18} />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

@@ -4,79 +4,216 @@
 
 @layer base {
   :root {
-    --background: #0a0a0a;
-    --background-secondary: #141414;
-    --background-tertiary: #1a1a1a;
-    --foreground: #fafafa;
-    --muted: #888888;
-    --accent: #c8ff00;
-    --accent-light: #d4ff33;
-    --accent-dark: #a8d900;
-    --border: #222222;
+    --bg: #050505;
+    --bg-elevated: #0e0e0e;
+    --bg-surface: #161616;
+    --text: #E8E6E1;
+    --text-secondary: #8A8A8A;
+    --lime: #C8FF00;
+    --stroke: #1E1E1E;
   }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--background);
-    color: var(--foreground);
+    background: var(--bg);
+    color: var(--text);
     font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background: var(--accent);
-    color: var(--background);
+    background: var(--lime);
+    color: var(--bg);
   }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #444; }
 }
 
 @layer components {
-  .container { @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8; }
-  .section { @apply py-16 md:py-24; }
-  .heading-1 { @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight; }
-  .heading-2 { @apply text-3xl md:text-4xl font-bold tracking-tight; }
-  .heading-3 { @apply text-2xl md:text-3xl font-bold tracking-tight; }
-
-  .btn { @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-xl transition-all duration-300; }
-  .btn-primary { @apply btn bg-gradient-accent text-background hover:opacity-90 hover:shadow-lg hover:shadow-accent/25 hover:scale-[1.02]; }
-  .btn-outline { @apply btn border border-border text-foreground hover:border-accent hover:text-accent hover:shadow-lg hover:shadow-accent/10; }
-
-  .card { @apply p-6 bg-background-secondary rounded-2xl border border-border; }
-  .card-glass { @apply p-6 rounded-2xl border border-border/50 backdrop-blur-sm; background: rgba(20, 20, 20, 0.6); }
-  .card-hover { @apply card transition-all duration-300 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1; }
-
-  .text-muted { color: var(--muted); }
-  .text-gradient { @apply bg-clip-text text-transparent; background-image: linear-gradient(135deg, #c8ff00, #22c55e, #06b6d4); }
-
-  .gradient-border {
-    position: relative;
+  /* ===== LAYOUT ===== */
+  .w-container {
+    @apply max-w-[1200px] mx-auto px-5 sm:px-8;
   }
-  .gradient-border::before {
+
+  .w-section {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .w-section-sm {
+    @apply py-16 md:py-24;
+  }
+
+  /* ===== DISPLAY TYPOGRAPHY ===== */
+  .w-display {
+    font-family: var(--font-space-grotesk, 'Space Grotesk', system-ui, sans-serif);
+    @apply text-display-xl;
+  }
+
+  .w-heading {
+    font-family: var(--font-space-grotesk, 'Space Grotesk', system-ui, sans-serif);
+    @apply text-display;
+  }
+
+  .w-subheading {
+    font-family: var(--font-space-grotesk, 'Space Grotesk', system-ui, sans-serif);
+    @apply text-title;
+  }
+
+  .w-label {
+    font-family: var(--font-jetbrains, 'JetBrains Mono', monospace);
+    @apply text-mono-sm uppercase tracking-[0.15em] text-lime;
+  }
+
+  /* ===== LIME TEXT ===== */
+  .w-lime {
+    color: var(--lime);
+  }
+
+  .w-lime-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #C8FF00 0%, #84CC16 50%, #22C55E 100%);
+  }
+
+  /* ===== BUTTONS ===== */
+  .w-btn {
+    @apply inline-flex items-center justify-center gap-2 font-medium transition-all duration-200;
+  }
+
+  .w-btn-primary {
+    @apply w-btn px-7 py-3.5 bg-lime text-bg rounded-full text-[0.9375rem] font-semibold;
+    @apply hover:shadow-[0_0_30px_rgba(200,255,0,0.3)] hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .w-btn-ghost {
+    @apply w-btn px-7 py-3.5 border border-stroke text-text rounded-full text-[0.9375rem];
+    @apply hover:border-lime/40 hover:text-lime active:scale-[0.98];
+  }
+
+  .w-btn-text {
+    @apply w-btn text-text-secondary text-[0.9375rem];
+    @apply hover:text-lime;
+  }
+
+  /* ===== CARDS ===== */
+  .w-card {
+    @apply p-6 md:p-8 rounded-2xl border border-stroke bg-bg-elevated;
+  }
+
+  .w-card-interactive {
+    @apply w-card transition-all duration-300;
+    @apply hover:border-stroke-accent hover:bg-bg-surface;
+  }
+
+  .w-card-glass {
+    @apply p-6 md:p-8 rounded-2xl border border-white/[0.06];
+    background: rgba(14, 14, 14, 0.7);
+    backdrop-filter: blur(16px);
+  }
+
+  /* ===== SURFACE EFFECTS ===== */
+  .w-mesh-gradient {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(200, 255, 0, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(34, 197, 94, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
+  }
+
+  .w-noise::before {
     content: '';
     position: absolute;
     inset: 0;
-    padding: 1px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, #c8ff00, #22c55e, #06b6d4);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
     pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
   }
 
-  .bg-grid {
-    background-image:
-      linear-gradient(rgba(200, 255, 0, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200, 255, 0, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+  .w-divider {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, var(--stroke) 20%, var(--stroke) 80%, transparent);
   }
 
-  .bg-dots {
-    background-image: radial-gradient(rgba(200, 255, 0, 0.1) 1px, transparent 1px);
-    background-size: 30px 30px;
+  /* ===== BROWSER MOCKUP ===== */
+  .w-browser {
+    @apply rounded-xl border border-stroke bg-bg-elevated overflow-hidden;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(200, 255, 0, 0.04);
   }
 
-  .glow-lime { box-shadow: 0 0 60px rgba(200, 255, 0, 0.12); }
+  .w-browser-bar {
+    @apply flex items-center gap-2 px-4 py-3 bg-bg-surface border-b border-stroke;
+  }
+
+  .w-browser-dot {
+    @apply w-2.5 h-2.5 rounded-full;
+  }
+
+  /* ===== HORIZONTAL SCROLL ===== */
+  .w-hscroll {
+    @apply flex gap-6 overflow-x-auto pb-4;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .w-hscroll::-webkit-scrollbar { display: none; }
+  .w-hscroll > * {
+    scroll-snap-align: center;
+    @apply flex-shrink-0;
+  }
+
+  /* ===== METRICS ===== */
+  .w-metric {
+    font-family: var(--font-space-grotesk, 'Space Grotesk', system-ui, sans-serif);
+    @apply text-5xl md:text-6xl font-bold tracking-tighter;
+    color: var(--lime);
+  }
+
+  .w-metric-label {
+    font-family: var(--font-jetbrains, 'JetBrains Mono', monospace);
+    @apply text-xs uppercase tracking-[0.15em] text-text-secondary mt-2;
+  }
+
+  /* ===== TYPING CURSOR ===== */
+  .w-cursor {
+    @apply inline-block w-[2px] h-[1.1em] bg-lime ml-0.5 align-text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+
+  /* ===== TAGS ===== */
+  .w-tag {
+    font-family: var(--font-jetbrains, 'JetBrains Mono', monospace);
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-full border border-stroke bg-bg-surface text-text-secondary;
+  }
+
+  .w-tag-lime {
+    @apply w-tag border-lime/20 text-lime bg-lime/[0.06];
+  }
+
+  /* ===== PROSE (legal pages) ===== */
+  .prose-dark {
+    @apply prose prose-invert prose-lg max-w-none;
+    --tw-prose-body: #8A8A8A;
+    --tw-prose-headings: #E8E6E1;
+    --tw-prose-links: #C8FF00;
+    --tw-prose-bold: #E8E6E1;
+    --tw-prose-bullets: #555;
+    --tw-prose-quotes: #E8E6E1;
+    --tw-prose-quote-borders: #C8FF00;
+    --tw-prose-counters: #C8FF00;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
 }

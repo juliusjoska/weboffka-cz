@@ -1,8 +1,7 @@
 import { Hero } from '@/components/sections/Hero'
-import { Services } from '@/components/sections/Services'
+import { Showcase } from '@/components/sections/Showcase'
 import { Process } from '@/components/sections/Process'
-import { Technologies } from '@/components/sections/Technologies'
-import { WhyUs } from '@/components/sections/WhyUs'
+import { Comparison } from '@/components/sections/Comparison'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { CTA } from '@/components/sections/CTA'
 
@@ -10,10 +9,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Services />
+      <Showcase />
       <Process />
-      <Technologies />
-      <WhyUs />
+      <Comparison />
       <Testimonials />
       <CTA />
     </>

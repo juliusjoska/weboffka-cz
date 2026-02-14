@@ -106,16 +106,16 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="border-b border-border last:border-0">
+    <div className="border-b border-stroke last:border-0">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between py-5 text-left hover:text-accent transition-colors"
+        className="w-full flex items-center justify-between py-5 text-left hover:text-lime transition-colors"
       >
         <span className="font-medium pr-4">{question}</span>
         <ChevronDown
           size={20}
-          className={`shrink-0 text-muted transition-transform duration-300 ${
-            isOpen ? 'rotate-180 text-accent' : ''
+          className={`shrink-0 text-text-secondary transition-transform duration-300 ${
+            isOpen ? 'rotate-180 text-lime' : ''
           }`}
         />
       </button>
@@ -125,7 +125,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         className="overflow-hidden"
       >
-        <p className="text-muted text-sm leading-relaxed pb-5">{answer}</p>
+        <p className="text-text-secondary text-sm leading-relaxed pb-5">{answer}</p>
       </motion.div>
     </div>
   )
@@ -135,30 +135,29 @@ export default function CenikPage() {
   return (
     <div className="pt-24 md:pt-32">
       {/* Hero */}
-      <section className="section pt-8 md:pt-12">
-        <div className="container text-center">
+      <section className="w-section-sm pt-8 md:pt-12">
+        <div className="w-container text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-accent font-medium mb-4"
+            className="w-label mb-4"
           >
-            Transparentní ceny
+            Ceník
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="heading-1 mb-6"
+            className="w-heading mb-6"
           >
-            Kolik stojí{' '}
-            <span className="text-gradient">nový web?</span>
+            Transparentní ceny
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-muted text-lg max-w-2xl mx-auto"
+            className="text-body-lg text-text-secondary max-w-2xl mx-auto"
           >
             Férové ceny bez skrytých poplatků. Vyberte si balíček, který
             odpovídá vašim potřebám, nebo nám napište a připravíme nabídku
@@ -168,8 +167,8 @@ export default function CenikPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="section pt-0">
-        <div className="container">
+      <section className="w-section pt-0">
+        <div className="w-container">
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {plans.map((plan, i) => (
               <motion.div
@@ -179,28 +178,28 @@ export default function CenikPage() {
                 whileInView="visible"
                 viewport={{ once: true, margin: '-50px' }}
                 variants={fadeUp}
-                className={`relative p-8 rounded-2xl border ${
+                className={`relative flex flex-col w-card ${
                   plan.highlighted
-                    ? 'gradient-border bg-background-secondary'
-                    : 'border-border bg-background-secondary'
-                } flex flex-col`}
+                    ? 'border-lime/40 ring-1 ring-lime/10'
+                    : ''
+                }`}
               >
                 {plan.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-bold rounded-full bg-gradient-accent text-background">
-                    Nejoblíbenější
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="w-tag-lime">Nejoblíbenější</span>
                   </div>
                 )}
                 <div className="mb-6">
-                  <h2 className="text-xl font-bold mb-2">{plan.name}</h2>
-                  <p className="text-muted text-sm mb-4">{plan.description}</p>
+                  <h2 className="w-subheading mb-2">{plan.name}</h2>
+                  <p className="text-text-secondary text-sm mb-4">{plan.description}</p>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-sm text-muted">od</span>
-                    <span className="text-4xl font-bold text-gradient">
+                    <span className="text-sm text-text-secondary">od</span>
+                    <span className="text-4xl font-bold w-lime-gradient font-display">
                       {plan.price}
                     </span>
-                    <span className="text-muted">Kč</span>
+                    <span className="text-text-secondary">Kč</span>
                   </div>
-                  <p className="text-sm text-muted mt-2">{plan.delivery}</p>
+                  <p className="text-sm text-text-tertiary mt-2">{plan.delivery}</p>
                 </div>
                 <ul className="flex-1 space-y-3 mb-8">
                   {plan.features.map((feature) => (
@@ -210,20 +209,20 @@ export default function CenikPage() {
                     >
                       <Check
                         size={16}
-                        className="text-accent mt-0.5 shrink-0"
+                        className="text-lime mt-0.5 shrink-0"
                       />
-                      <span className="text-muted">{feature}</span>
+                      <span className="text-text-secondary">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/kontakt"
                   className={
-                    plan.highlighted ? 'btn-primary w-full' : 'btn-outline w-full'
+                    plan.highlighted ? 'w-btn-primary w-full' : 'w-btn-ghost w-full'
                   }
                 >
                   Mám zájem
-                  <ArrowRight size={18} className="ml-2" />
+                  <ArrowRight size={18} />
                 </Link>
               </motion.div>
             ))}
@@ -233,7 +232,7 @@ export default function CenikPage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            className="text-center text-muted text-sm mt-8"
+            className="text-center text-text-tertiary text-sm mt-8"
           >
             Všechny ceny jsou uvedeny bez DPH. Nejsme plátci DPH.
           </motion.p>
@@ -241,8 +240,8 @@ export default function CenikPage() {
       </section>
 
       {/* FAQ */}
-      <section className="section">
-        <div className="container max-w-3xl">
+      <section className="w-section">
+        <div className="w-container max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -250,8 +249,8 @@ export default function CenikPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="heading-2 mb-4">Časté otázky</h2>
-            <p className="text-muted">
+            <h2 className="w-heading mb-4">Časté otázky</h2>
+            <p className="text-text-secondary">
               Odpovědi na otázky, které dostáváme nejčastěji.
             </p>
           </motion.div>
@@ -260,7 +259,7 @@ export default function CenikPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="card"
+            className="w-card"
           >
             {faqs.map((faq) => (
               <FaqItem key={faq.question} {...faq} />
@@ -270,26 +269,29 @@ export default function CenikPage() {
       </section>
 
       {/* CTA */}
-      <section className="section">
-        <div className="container">
+      <section className="w-section">
+        <div className="w-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="card-glass gradient-border text-center py-16 px-8"
+            className="w-card-glass text-center py-16 px-8 relative overflow-hidden"
           >
-            <h2 className="heading-2 mb-4">
-              Potřebujete něco jiného?
-            </h2>
-            <p className="text-muted text-lg max-w-xl mx-auto mb-8">
-              Každý projekt je unikátní. Napište nám a připravíme
-              individuální nabídku přesně pro vás. Konzultace je zdarma.
-            </p>
-            <Link href="/kontakt" className="btn-primary text-lg px-8 py-4">
-              Chci nabídku na míru
-              <ArrowRight size={20} className="ml-2" />
-            </Link>
+            <div className="w-mesh-gradient absolute inset-0" />
+            <div className="relative z-10">
+              <h2 className="w-heading mb-4">
+                Potřebujete něco jiného?
+              </h2>
+              <p className="text-text-secondary text-body-lg max-w-xl mx-auto mb-8">
+                Každý projekt je unikátní. Napište nám a připravíme
+                individuální nabídku přesně pro vás. Konzultace je zdarma.
+              </p>
+              <Link href="/kontakt" className="w-btn-primary">
+                Chci nabídku na míru
+                <ArrowRight size={18} />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

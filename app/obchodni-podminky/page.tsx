@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 
 export default function ObchodniPodminkyPage() {
   return (
-    <div className="container section pt-32">
-      <h1 className="heading-2 mb-4">Obchodní podmínky</h1>
-      <p className="text-muted mb-10">Účinnost od 1. února 2026</p>
+    <div className="w-container w-section pt-32">
+      <h1 className="w-heading mb-4">Obchodní podmínky</h1>
+      <p className="text-text-secondary mb-10">Účinnost od 1. února 2026</p>
 
-      <div className="prose prose-invert prose-lime max-w-none prose-headings:text-foreground prose-p:text-muted prose-li:text-muted prose-strong:text-foreground prose-a:text-accent hover:prose-a:text-accent-light">
+      <div className="prose-dark">
         <h2>1. Úvodní ustanovení</h2>
         <p>
           Tyto obchodní podmínky (dále jen &quot;podmínky&quot;) upravují vzájemná práva
@@ -24,8 +24,8 @@ export default function ObchodniPodminkyPage() {
           IČO: 24409979<br />
           Neplátce DPH<br />
           Sídlo: Praha<br />
-          E-mail: <a href="mailto:info@ajtak.it">info@ajtak.it</a><br />
-          Telefon: +420 775 305 305<br />
+          E-mail: <a href="mailto:julius.joska@weboffka.cz">julius.joska@weboffka.cz</a><br />
+          Telefon: +420 731 860 594<br />
           Web: <a href="https://weboffka.cz">weboffka.cz</a>
         </p>
         <p>

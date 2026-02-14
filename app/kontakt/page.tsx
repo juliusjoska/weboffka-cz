@@ -8,7 +8,6 @@ import { useState } from 'react'
 import {
   Mail,
   Phone,
-  MapPin,
   Building,
   Send,
   Loader2,
@@ -48,9 +47,8 @@ const rozpocty = [
 ]
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'info@ajtak.it', href: 'mailto:info@ajtak.it' },
-  { icon: Phone, label: 'Telefon', value: '+420 775 305 305', href: 'tel:+420775305305' },
-  { icon: MapPin, label: 'Adresa', value: 'Praha, Česká republika', href: null },
+  { icon: Mail, label: 'Email', value: 'julius.joska@weboffka.cz', href: 'mailto:julius.joska@weboffka.cz' },
+  { icon: Phone, label: 'Telefon', value: '+420 731 860 594', href: 'tel:+420731860594' },
   { icon: Building, label: 'IČO', value: '24409979', href: null },
 ]
 
@@ -83,35 +81,34 @@ export default function KontaktPage() {
   }
 
   const inputClasses =
-    'w-full px-4 py-3 bg-background-tertiary border border-border rounded-xl text-foreground placeholder:text-muted/50 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/25 transition-colors text-sm'
+    'w-full px-4 py-3 bg-bg-elevated border border-stroke rounded-xl text-text placeholder:text-text-tertiary focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/25 transition-colors text-sm'
 
   return (
     <div className="pt-24 md:pt-32">
-      <section className="section pt-8 md:pt-12">
-        <div className="container">
+      <section className="w-section pt-8 md:pt-12">
+        <div className="w-container">
           <div className="text-center mb-16">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-accent font-medium mb-4"
+              className="w-label mb-4"
             >
-              Ozvěte se nám
+              Kontakt
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="heading-1 mb-6"
+              className="w-heading mb-6"
             >
-              Máte{' '}
-              <span className="text-gradient">nápad?</span>
+              Napište nám
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-muted text-lg max-w-2xl mx-auto"
+              className="text-body-lg text-text-secondary max-w-2xl mx-auto"
             >
               Popište nám svůj projekt a my se vám ozveme do 24 hodin
               s nezávaznou nabídkou.
@@ -126,20 +123,20 @@ export default function KontaktPage() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="lg:col-span-2 space-y-6"
             >
-              <div className="card p-8">
-                <h3 className="text-lg font-bold mb-6">Kontaktní údaje</h3>
+              <div className="w-card">
+                <h3 className="w-subheading text-lg mb-6">Kontaktní údaje</h3>
                 <div className="space-y-5">
                   {contactInfo.map((info) => (
                     <div key={info.label} className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-accent/10">
-                        <info.icon size={18} className="text-accent" />
+                      <div className="p-2 rounded-lg bg-lime-dim">
+                        <info.icon size={18} className="text-lime" />
                       </div>
                       <div>
-                        <p className="text-xs text-muted mb-0.5">{info.label}</p>
+                        <p className="text-xs text-text-tertiary mb-0.5">{info.label}</p>
                         {info.href ? (
                           <a
                             href={info.href}
-                            className="text-sm font-medium hover:text-accent transition-colors"
+                            className="text-sm font-medium hover:text-lime transition-colors"
                           >
                             {info.value}
                           </a>
@@ -152,18 +149,18 @@ export default function KontaktPage() {
                 </div>
               </div>
 
-              <div className="card-glass p-6">
+              <div className="w-card-glass">
                 <h3 className="font-medium mb-3">Fakturační údaje</h3>
-                <div className="text-sm text-muted space-y-1">
+                <div className="text-sm text-text-secondary space-y-1">
                   <p>Julius Joska — ajtak.it</p>
                   <p>IČO: 24409979</p>
                   <p>Neplátce DPH</p>
                 </div>
               </div>
 
-              <div className="card-glass p-6">
+              <div className="w-card-glass">
                 <h3 className="font-medium mb-3">Jak to funguje?</h3>
-                <ol className="text-sm text-muted space-y-2 list-decimal list-inside">
+                <ol className="text-sm text-text-secondary space-y-2 list-decimal list-inside">
                   <li>Vyplníte formulář nebo zavoláte</li>
                   <li>Probereme váš projekt a potřeby</li>
                   <li>Připravíme nezávaznou nabídku</li>
@@ -179,17 +176,17 @@ export default function KontaktPage() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="lg:col-span-3"
             >
-              <div className="card p-8">
+              <div className="w-card">
                 {submitStatus === 'success' ? (
                   <div className="text-center py-12">
-                    <CheckCircle size={48} className="text-accent mx-auto mb-4" />
-                    <h3 className="text-xl font-bold mb-2">Zpráva odeslána!</h3>
-                    <p className="text-muted">
+                    <CheckCircle size={48} className="text-lime mx-auto mb-4" />
+                    <h3 className="w-subheading mb-2">Zpráva odeslána!</h3>
+                    <p className="text-text-secondary">
                       Děkujeme za vaši poptávku. Ozveme se vám do 24 hodin.
                     </p>
                     <button
                       onClick={() => setSubmitStatus('idle')}
-                      className="btn-outline mt-6"
+                      className="w-btn-ghost mt-6"
                     >
                       Odeslat další zprávu
                     </button>
@@ -308,15 +305,15 @@ export default function KontaktPage() {
                       <label className="flex items-start gap-3 cursor-pointer">
                         <input
                           type="checkbox"
-                          className="mt-1 w-4 h-4 rounded border-border bg-background-tertiary accent-accent"
+                          className="mt-1 w-4 h-4 rounded border-stroke bg-bg-elevated accent-lime"
                           {...register('souhlas')}
                         />
-                        <span className="text-sm text-muted">
+                        <span className="text-sm text-text-secondary">
                           Souhlasím se zpracováním osobních údajů za účelem
                           vyřízení poptávky dle{' '}
                           <a
                             href="/ochrana-osobnich-udaju"
-                            className="text-accent hover:underline"
+                            className="text-lime hover:underline"
                           >
                             zásad ochrany osobních údajů
                           </a>
@@ -331,23 +328,23 @@ export default function KontaktPage() {
                     {submitStatus === 'error' && (
                       <div className="flex items-center gap-2 text-red-400 text-sm p-3 rounded-lg bg-red-400/10">
                         <AlertCircle size={18} />
-                        Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nám napište na info@ajtak.it.
+                        Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nám napište na julius.joska@weboffka.cz.
                       </div>
                     )}
 
                     <button
                       type="submit"
                       disabled={submitStatus === 'loading'}
-                      className="btn-primary w-full py-4 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-btn-primary w-full py-4 text-base disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {submitStatus === 'loading' ? (
                         <>
-                          <Loader2 size={20} className="mr-2 animate-spin" />
+                          <Loader2 size={20} className="animate-spin" />
                           Odesílám...
                         </>
                       ) : (
                         <>
-                          <Send size={20} className="mr-2" />
+                          <Send size={20} />
                           Odeslat poptávku
                         </>
                       )}
