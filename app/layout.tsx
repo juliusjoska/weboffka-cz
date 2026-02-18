@@ -42,6 +42,12 @@ export const metadata: Metadata = {
     locale: 'cs_CZ',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Weboffka.cz — Weby, které fungují',
+    description: 'Moderní weby na míru. Od osobních webů po e-shopy. Bez WordPressu, bez komplikací.',
+    creator: '@juliusjoska',
+  },
   robots: { index: true, follow: true },
 }
 
@@ -57,13 +63,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'ProfessionalService',
               name: 'Weboffka.cz — ajtak.it',
               url: 'https://weboffka.cz',
-              email: 'julius.joska@weboffka.cz',
+              email: 'info@ajtak.it',
               telephone: '+420 731 860 594',
               description: 'Tvorba moderních webových stránek na míru.',
               founder: { '@type': 'Person', name: 'Julius Joska' },
               address: { '@type': 'PostalAddress', addressLocality: 'Praha', addressCountry: 'CZ' },
               priceRange: 'od 14 900 Kč',
-              sameAs: ['https://github.com/juliusjoska', 'https://ajtak.it'],
+              sameAs: ['https://github.com/juliusjoska', 'https://ajtak.it', 'https://juliusjoska.cz', 'https://juliusjoska.dev'],
               areaServed: { '@type': 'Country', name: 'Česká republika' },
             }),
           }}

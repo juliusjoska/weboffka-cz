@@ -24,7 +24,7 @@ export default function ObchodniPodminkyPage() {
           IČO: 24409979<br />
           Neplátce DPH<br />
           Sídlo: Praha<br />
-          E-mail: <a href="mailto:julius.joska@weboffka.cz">julius.joska@weboffka.cz</a><br />
+          E-mail: <a href="mailto:info@ajtak.it">info@ajtak.it</a><br />
           Telefon: +420 731 860 594<br />
           Web: <a href="https://weboffka.cz">weboffka.cz</a>
         </p>

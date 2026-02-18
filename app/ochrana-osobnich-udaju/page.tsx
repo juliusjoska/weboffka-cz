@@ -19,7 +19,7 @@ export default function OchranaOsobnichUdajuPage() {
           se sídlem v Praze, zapsaný v živnostenském rejstříku (dále jen &quot;správce&quot;).
         </p>
         <p>
-          Kontaktní e-mail: <a href="mailto:julius.joska@weboffka.cz">julius.joska@weboffka.cz</a><br />
+          Kontaktní e-mail: <a href="mailto:info@ajtak.it">info@ajtak.it</a><br />
           Telefon: +420 731 860 594<br />
           Web: <a href="https://weboffka.cz">weboffka.cz</a>
         </p>
@@ -75,7 +75,7 @@ export default function OchranaOsobnichUdajuPage() {
         </ul>
         <p>
           Pro uplatnění svých práv nás kontaktujte na e-mailu{' '}
-          <a href="mailto:julius.joska@weboffka.cz">julius.joska@weboffka.cz</a>. Na vaši žádost odpovíme
+          <a href="mailto:info@ajtak.it">info@ajtak.it</a>. Na vaši žádost odpovíme
           nejpozději do 30 dnů.
         </p>
 

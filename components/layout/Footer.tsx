@@ -70,10 +70,10 @@ export function Footer() {
               </h4>
               <div className="flex flex-col gap-2.5 text-sm">
                 <a
-                  href="mailto:julius.joska@weboffka.cz"
+                  href="mailto:info@ajtak.it"
                   className="text-text-secondary hover:text-lime transition-colors"
                 >
-                  julius.joska@weboffka.cz
+                  info@ajtak.it
                 </a>
                 <a
                   href="tel:+420731860594"

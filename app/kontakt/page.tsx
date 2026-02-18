@@ -47,7 +47,7 @@ const rozpocty = [
 ]
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'julius.joska@weboffka.cz', href: 'mailto:julius.joska@weboffka.cz' },
+  { icon: Mail, label: 'Email', value: 'info@ajtak.it', href: 'mailto:info@ajtak.it' },
   { icon: Phone, label: 'Telefon', value: '+420 731 860 594', href: 'tel:+420731860594' },
   { icon: Building, label: 'IČO', value: '24409979', href: null },
 ]
@@ -328,7 +328,7 @@ export default function KontaktPage() {
                     {submitStatus === 'error' && (
                       <div className="flex items-center gap-2 text-red-400 text-sm p-3 rounded-lg bg-red-400/10">
                         <AlertCircle size={18} />
-                        Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nám napište na julius.joska@weboffka.cz.
+                        Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nám napište na info@ajtak.it.
                       </div>
                     )}
 
